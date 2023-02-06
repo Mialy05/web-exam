@@ -1,7 +1,7 @@
 QUAND L'HEBERGEUR EST CONFIGURE
 production
-    config base_url 
-    config db for the production OK
+    config base_url => OK
+    config db for the production => OK
     config db for the local
 
 SELON SUJET
