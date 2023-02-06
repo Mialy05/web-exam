@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => 'mysql-tech-mialy.alwaysdata.net',
+	'username' => '299035_mialy',
+	'password' => 'SOA_data_2003',
 	'database' => '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

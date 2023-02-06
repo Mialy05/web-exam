@@ -1,8 +1,8 @@
 QUAND L'HEBERGEUR EST CONFIGURE
-config base_url : OK
-    push
-config db for the production
-
+production
+    config base_url 
+    config db for the production OK
+    config db for the local
 
 SELON SUJET
     config default controller
