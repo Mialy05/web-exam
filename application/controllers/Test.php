@@ -35,7 +35,7 @@ class Test extends CI_Controller
     $data = array(
       'styleSheets' => ['form.css', 'crud-categorie.css'],
       'title' => 'APP | title provisoire',
-      'component' => 'backoffice/insert-categorie'
+      'component' => 'backoffice/insert-categorie',
     );
 
     $this->load->view('templates/body', $data);

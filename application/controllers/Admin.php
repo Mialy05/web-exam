@@ -39,8 +39,8 @@ class Admin extends CI_Controller {
     $data["categories"] = $this->categorieModel->getAll();
 		$data = array(
       'styleSheets' => ['admin-category.css'],
-      'title' => 'liste',
-      'component' => 'liste-categorie',
+      'title' => 'Les catégories',
+      'component' => 'backoffice/liste-categorie',
 			'categories' => $this->categorieModel->getAll()
     );
     $this->load->view("templates/body", $data);
