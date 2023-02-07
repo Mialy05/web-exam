@@ -1,6 +1,3 @@
-CREATE DATABASE takalo;
-USE takalo;
-
 CREATE TABLE utilisateur(
     idutilisateur INTEGER auto_increment, 
     nom VARCHAR(45),

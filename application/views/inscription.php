@@ -29,11 +29,11 @@
                 <input type="email" name="email" class="input" value="<?= set_value("email"); ?>">
             </div>
             <div class="input-group">
-                <label for="password">Mot de pass</label>
+                <label for="password">Mot de passe</label>
                 <input type="password" name="password" class="input">
             </div>
             <div class="tools" id="loginTools">
-                <button class="btn loginBtn" type="submit" >Se connecter</button>
+                <button class="btn loginBtn" type="submit" >S'inscrire</button>
                 <p>
                     Déjà un compte ? 
                     <?= anchor('login', 'Se connecter') ?>
