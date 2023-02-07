@@ -42,10 +42,18 @@ class Test extends CI_Controller
   }
 
   public function modele() {
-   
+    // $this->session->set_userdata('name', 'Rakoto'); 
+    // if($this->session->name != null) {
+      // echo $this->session->name;
+    // }
+    // $this->session->unset_userdata('name'); 
+    // if($this->session->name != null) {
+      $this->load->model("Categorie_model", "c");
+      var_dump( $this->c->getAll());
+    }
   }
 
-}
+
 
 
 /* End of file Test.php */
