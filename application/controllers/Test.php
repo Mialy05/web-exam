@@ -35,12 +35,12 @@ class Test extends CI_Controller
 
   public function view() {
     $data = array(
-      'styleSheets' => ['style.css'],
+      'styleSheets' => ['login.css'],
       'title' => 'APP | title provisoire',
-      'component' => 'welcome_message'
+      'component' => 'login'
     );
 
-    $this->load->view('templates/body', $data);
+    $this->load->view('login', $data);
   }
 
   public function modele() {
