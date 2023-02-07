@@ -24,6 +24,7 @@ class Login extends CI_Controller {
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('client_model', 'clientModel', true);
     $this->errorMessage = array (
     "required" => 'Veuillez remplir le champ %s.'
 		);
@@ -65,13 +66,25 @@ class Login extends CI_Controller {
           echo "mety"; 
       }
 			else {
-				echo "Diso";
+				$email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $data = array(
+          'email' => $email,
+          'password' => $password
+        );
+        $id = $this->clientModel->auth($data);
+        if($id > 0) {
+          $this->session->set_userdata('user', $id);
+          // redirect('home');
+        }
+        else {
+          $this->session->set_flashdata("email", $email);
+          $this->index();
+        }
 			}
     }
 	}
 }	
-
-
 
 /* End of file Login.php */
 /* Location: ./application/controllers/Login.php */
