@@ -13,4 +13,9 @@ html {
 
 body {
     margin: 0;
+    font-family: font-theme;
+}
+
+.error {
+    color: red;
 }
