@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/style/<?= $style ?>">
     <?php } ?>
     <title><?= $title ?></title>
-    <?php $admin ="rakoto@gmail.com" ?>
 </head>
 <body>
     <div class="front">

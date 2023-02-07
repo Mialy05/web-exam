@@ -32,6 +32,12 @@ class Admin extends ControllerSession {
 
   public function listeCategories() {
     $data["categories"] = $this->categorieModel->getAll();
+    $data = array(
+        'styleSheets' => ['admincategorie.css'],
+        'title' => 'APP | title provisoire',
+        'component' => 'Categorie_model'
+
+      );
     $this->load->view("templates/body", $data);
   }
 
