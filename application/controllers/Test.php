@@ -18,6 +18,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
+// require_once APPPATH.'controllers/Basecontroller.php';
+
 class Test extends CI_Controller
 {
     
@@ -32,7 +34,13 @@ class Test extends CI_Controller
   }
 
   public function view() {
+    $data = array(
+      'styleSheets' => ['style.css'],
+      'title' => 'APP | title provisoire',
+      'component' => 'welcome_message'
+    );
 
+    $this->load->view('templates/body', $data);
   }
 
   public function modele() {
@@ -40,7 +48,7 @@ class Test extends CI_Controller
     if($this->session->name != null) {
       echo $this->session->name;
     }
-    $this->session->unset_userdata('name'); 
+    // $this->session->unset_userdata('name'); 
     if($this->session->name != null) {
       echo $this->session->name;
     }

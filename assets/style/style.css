@@ -1,0 +1,12 @@
+html {
+    --theme: blueviolet;
+}
+
+@font-face {
+    font-family: font-theme;
+    src: url("../fonts/Rubik.ttf");
+}
+
+html {
+    font-family: font-theme;
+}
