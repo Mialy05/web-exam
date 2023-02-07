@@ -18,7 +18,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Objet_controller extends CI_Controller
+require_once APPPATH.'controllers/Basecontroller.php'; 
+
+class Objet extends Basecontroller
 {
     
   public function __construct()
@@ -32,16 +34,17 @@ class Objet_controller extends CI_Controller
   }
 
 	public function details($id) {
-		$data['details']= $this->Objetmodel->getDetailsBy($id);
-		$data['photo']= $this->Objetmodel->getPhotos($id);
+
 
 		$data = array(
 			'styleSheets' => ['frontoffice/details-objet.css'], 
-			'title' => '$this->Objetmodel->getDetailsBy($id)->titre ', 
+			'title' => 'Détails', 
 			'site' => 'user', 
 			'component' => 'frontoffice/details-objet' ,
-			'details'=> $this->Objetmodel-> getDetailsBy($id),
-			'photo'=>$this->Objetmodel->getPhotos($id)
+			'categorie'=> $this->Objetmodel-> getDetailsBy($id),
+			'photos'=> $this->Objetmodel->getPhotos($id),
+			'myobjects' => $this->Objetmodel->getObjetOf($this->session->user),
+			"form" => true
 		);
 
 		$this->load->view('templates/body', $data);

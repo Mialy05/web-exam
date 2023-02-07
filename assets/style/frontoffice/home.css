@@ -1,0 +1,120 @@
+.liste {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 5rem;
+}
+
+.card{
+    padding: 1rem;
+	width: 20rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 1rem;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: 2px 1px 5px 1px grey;
+}
+
+.details {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+img {
+    width: calc(100% - 5%);
+    border-radius: 1rem;
+}
+
+.name {
+    text-transform: capitalize;
+}
+
+.prix {
+    font-weight: bold;
+}
+
+.btnLink {
+    display: flex;
+    background: var(--theme);
+    width: 10rem;
+    height: 3rem;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+}
+
+.options {
+    padding: 1rem;
+}
+/* .title{
+    text-align: center;
+    font-style: oblique;
+    color: darksalmon;
+    
+}
+.home{
+   
+    row-gap:5%;
+    margin-top: 1%;
+    height: 50%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    
+}
+.card{
+    margin-left:15%;
+    width:14rem;
+    height: 12rem;
+    background-color: burlywood;
+
+}
+.details{
+    display: inline-flex;
+    margin-right: 50%;
+    
+}
+.nom{
+    padding-right:100%;
+    font-style: oblique;
+}
+.prix{
+    padding-left:100%;
+    font-style: oblique;
+}
+.liste{
+        
+        width: 20rem;
+        height:20rem;
+        margin-left: 8%;
+        border-radius: 15%;
+        margin-left: 8%;
+        border: 1px solid black;
+        text-align: center;
+        text-decoration: none;
+        flex-direction: row;
+        margin: auto;
+}
+.a{
+    width: 5rem;
+    height:3rem;
+    border: 1px solid black;
+    background-color: lightpink;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-left:40%;
+} */

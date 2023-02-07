@@ -24,9 +24,8 @@ class Basecontroller extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    if(!$this->session->has_userdata('name')) {
-      echo 'tsisy session oh<br>';
-      // redirect('test/modele');
+    if(!$this->session->has_userdata('user')) {
+      redirect('login');
     }
   }
 

@@ -136,7 +136,8 @@ insert into objetcategorie values(15,2);
 
 -- view sarobidy
 create view detailobjet as 
-select objet.idobjet, titre, description, prix, idproprietaire, u.nom from objet 
+select objet.idobjet, titre, description, prix, idproprietaire, u.nom as proprietaire, p.photo 
+from objet
 join utilisateur as u on idproprietaire=u.idutilisateur 
 join photoobjet as p on objet.idobjet=p.idobjet
 where p.typephoto = 1;
