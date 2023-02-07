@@ -42,6 +42,16 @@ class Login extends CI_Controller {
 		$this->load->view('login', $data);
   }
 
+  public function utilisateur()
+  {
+		$data = array(
+      'styleSheets' => ['login.css'],
+      'title' => 'Login',
+      'component' => 'login'
+    );
+		$this->load->view('login', $data);
+  }
+
 	public function authentification() {
     $this->form_validation->set_rules(
       "email", "Email", 

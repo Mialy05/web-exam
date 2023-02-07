@@ -72,11 +72,26 @@ class Inscription extends CI_Controller
         'nom' => $this->input->post('nom'),
         'prenom' => $this->input->post('prenom'),
         'email' => $this->input->post('email'),
-        'motdepasse' => $this->input->post('password'),
+        'motdepasse' => $this->input->post('password')
       );
 
-
-
+      $inscrit = $this->clientModel->inscrire($data);
+      if($inscrit == TRUE) {
+        redirect('login/utilisateur');
+      }
+      else {
+        $form = array (
+          'styleSheets' => array('login.css'),
+          'title' => 'Inscription',
+          'component' => 'inscription',
+          'idutilisateur' => '',
+          'nom' => $this->input->post('nom'),
+          'prenom' => $this->input->post('prenom'),
+          'email' => $this->input->post('email'),
+          'motdepasse' => $this->input->post('password')
+        );
+        $this->load->view('inscription', $data);
+      }
     }
   }
 
