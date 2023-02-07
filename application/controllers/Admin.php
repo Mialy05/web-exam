@@ -17,9 +17,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @return    ...
  *
  */
-require_once APPPATH.'controllers/ControllerSession.php'; 
 
-class Admin extends ControllerSession {
+class Admin extends CI_Controller {
     
   public function __construct() {
     parent::__construct();
@@ -32,6 +31,12 @@ class Admin extends ControllerSession {
 
   public function listeCategories() {
     $data["categories"] = $this->categorieModel->getAll();
+		$data = array(
+      'styleSheets' => ['admin-category.css'],
+      'title' => 'liste',
+      'component' => 'liste-categorie',
+			'categories' => $this->categorieModel->getAll()
+    );
     $this->load->view("templates/body", $data);
   }
 

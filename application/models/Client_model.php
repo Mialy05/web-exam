@@ -55,6 +55,8 @@ class Client_model extends CI_Model {
     return FALSE;
   }
 
+	
+
 }
 
 /* End of file Client_model.php */
