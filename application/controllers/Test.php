@@ -47,7 +47,7 @@ class Test extends CI_Controller
    
   }
 
-}
+
 
 
 /* End of file Test.php */
