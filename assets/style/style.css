@@ -12,19 +12,18 @@ html {
 html {
     font-family: font-theme;
 }
-<<<<<<< HEAD
 
 body {
     margin: 0;
-<<<<<<< HEAD
-}
-=======
->>>>>>> sarobidy
-=======
     font-family: font-theme;
 }
 
 .error {
     color: red;
 }
->>>>>>> mialisoa
+
+a {
+    text-decoration: none;
+}
+
+
