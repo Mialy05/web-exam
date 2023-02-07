@@ -16,12 +16,8 @@
             <input type="prix" name="prix" class="input" value="<?= set_value("prix"); ?>">
         </div>
         <div class="input-group">
-            <label for="photo1">Photo principale</label>
-            <input type='file' name='photo1' class="input">
-        </div>    
-        <div class="input-group">
-            <label for="photos">Photo principale</label>
-            <input type='file' name='photos[]' class="input">
+            <label for="photos">Photos</label>
+            <input type='file' name='photos[]' class="input" multiple="">
         </div>   
         <div class="tools" id="loginTools">
             <button class="btn loginBtn" type="submit" >Créer</button>

@@ -92,13 +92,22 @@ class Site extends Basecontroller
       $this->nouveau();
     }
     else {
-      
-      $this->uploadFile();
+      $title = $this->input->post('nom');
+      $description = $this->input->post('description');
+      $prix = $this->input->post('prix');
+      $photos = $this->uploadFiles();
+
+      var_dump($photos);
+
+      $this->objetModel->create($title, $description, $prix, $this->session->user, $photos);
+      // var_dump($this->uploadFiles());
     }
 
   }
 
-  public function uploadFile() {
+  public function uploadFiles() {
+    $data = array();
+
     $count = count($_FILES['photos']['name']);
     
     for($i=0;$i<$count;$i++){
@@ -117,9 +126,13 @@ class Site extends Basecontroller
  
         $this->load->library('upload',$config); 
   
+        $uploadData = null;
         if($this->upload->do_upload('file')){
           $uploadData = $this->upload->data();
         }
+        $data[] = $uploadData;
+
+        return $data;
       }
     }
   }
