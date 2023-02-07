@@ -1,0 +1,18 @@
+.liste {
+	display: flex;
+	align-items: center;
+	
+}
+.card{
+	width: 20rem;
+	height: 20rem;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	border: solid;
+	border-radius: 1rem;
+	align-items: center;
+	margin-left: 10rem;
+	margin-top: 10rem;
+}
+

@@ -18,8 +18,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-// require_once APPPATH.'controllers/Basecontroller.php';
-
 class Test extends CI_Controller
 {
     
@@ -34,10 +32,10 @@ class Test extends CI_Controller
   }
 
   public function view() {
-    $data = array(
-      'styleSheets' => ['style.css'],
-      'title' => 'APP | title provisoire',
-      'component' => 'welcome_message'
+		$data = array(
+      'styleSheets' => ['admin-category.css'],
+      'title' => 'liste',
+      'component' => 'liste-categorie'
     );
 
     $this->load->view('templates/body', $data);

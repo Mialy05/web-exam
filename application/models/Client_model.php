@@ -46,13 +46,7 @@ class Client_model extends CI_Model {
     return $auth->idutilisateur;
   }
 
-	public function inscrire($data) {
-    $query = $this->db->insert('client', $data);
-    if($this->db->affected_rows() == 1) {
-      return TRUE;
-    }
-    return FALSE;
-  }
+	
 
 }
 
