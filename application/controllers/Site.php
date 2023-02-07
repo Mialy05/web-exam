@@ -34,7 +34,7 @@ class Site extends Basecontroller
   }
 
   public function allobjets() {
-    $objets = $this->objetModel->getOthersObjetOf($this->session->user);
+    $objets = $this->objetModel->getDetailOthersObjetOf($this->session->user);
     $data = array (
       'styleSheets' => ['frontoffice/home.css'],
       'title' => 'Découvrir',
@@ -42,12 +42,11 @@ class Site extends Basecontroller
       'site' => 'user',
       'objets' => $objets
     );
-    // $this->load->view('templates/body', $data);
-    var_dump($objets);
+    $this->load->view('templates/body', $data);
   }
 
   public function myobjets() {
-    $objets = $this->objetModel->getObjetOf($this->session->user);
+    $objets = $this->objetModel->getDetailObjetOf($this->session->user);
     $data = array (
       'styleSheets' => ['frontoffice/home.css'],
       'title' => 'Gestion d\'objets',
@@ -55,8 +54,7 @@ class Site extends Basecontroller
       'site' => 'user',
       'objets' => $objets
     );
-    // $this->load->view('templates/body', $data);
-    var_dump($objets);
+    $this->load->view('templates/body', $data);
   }
 
   // Afindra any am objet

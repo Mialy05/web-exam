@@ -12,27 +12,25 @@ html {
 html {
     font-family: font-theme;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> c8c7c288258a650d23e1e93b8a75c4c5a4ee401f
 
 body {
     margin: 0;
-    font-family: font-theme;
 }
 
 .error {
     color: red;
 }
-<<<<<<< HEAD
->>>>>>> mialisoa
-=======
 
 a {
     text-decoration: none;
 }
 
+img {
+    transition: 0.3s ease-in-out;
+    user-select: none;
+}
 
->>>>>>> c8c7c288258a650d23e1e93b8a75c4c5a4ee401f
+img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}

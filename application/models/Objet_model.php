@@ -40,18 +40,23 @@ class Objet_model extends CI_Model {
   }
 
   public function getCondition($condition) {
-    $query = $this->db->get_where("objet", $condition);
+    $query = $this->db->get_where("detailobjet", $condition);
     return $query->result();
   }
 
-  public function getOthersObjetOf($iduser) {
+  public function getDetailOthersObjetOf($iduser) {
     $condition = array('idproprietaire !=' => $iduser);
+    return $this->objetModel->getCondition($condition);
+  }
+
+  public function getDetailObjetOf($iduser) {
+    $condition = array('idproprietaire =' => $iduser);
     return $this->objetModel->getCondition($condition);
   }
 
   public function getObjetOf($iduser) {
     $condition = array('idproprietaire =' => $iduser);
-    return $this->objetModel->getCondition($condition);
+    return $this->db->get_where('objet', $condition)->result();
   }
 
   // public function create($title, $description, $prix, $proprietaire, $photos) {
