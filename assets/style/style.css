@@ -16,6 +16,15 @@ html {
 
 body {
     margin: 0;
+<<<<<<< HEAD
 }
 =======
 >>>>>>> sarobidy
+=======
+    font-family: font-theme;
+}
+
+.error {
+    color: red;
+}
+>>>>>>> mialisoa

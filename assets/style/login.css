@@ -30,8 +30,6 @@ header {
     place-items: center;
 }
 
-
-
 .form {
     padding: 10rem 2rem;
     width: 20rem;
@@ -88,9 +86,7 @@ input, select {
     text-align: center;
 }
 
-.error {
-    color: red;
-}
+
 
 
 
