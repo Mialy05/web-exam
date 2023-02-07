@@ -25,7 +25,18 @@ INSERT INTO categorie VALUES("","jeu");
 INSERT INTO categorie VALUES("","vetement");
 INSERT INTO categorie VALUES("","technologie");
 INSERT INTO categorie VALUES("","art");
+<<<<<<< HEAD
+<<<<<<< HEAD:application/sql/script.sql
+INSERT INTO categorie VALUES("","jeux");
+
+-- table vaovao
+=======
 INSERT INTO categorie VALUES("","plante");
+>>>>>>> mialisoa:sql/script.sql
+
+=======
+INSERT INTO categorie VALUES("","plante");
+>>>>>>> c8c7c288258a650d23e1e93b8a75c4c5a4ee401f
 
 -- eto 2
 CREATE TABLE objet(

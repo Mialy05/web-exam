@@ -32,20 +32,21 @@ class Test extends CI_Controller
   }
 
   public function view() {
-    $data = array(
-      'styleSheets' => ['home.tmp.css'],
-      'title' => 'APP | title provisoire',
-      'component' => 'frontoffice/my-objet'
+		$data = array(
+      'styleSheets' => ['admin-category.css'],
+      'title' => 'liste',
+      'component' => 'liste-categorie'
     );
 
     $this->load->view('templates/body', $data);
   }
 
-  public function modele() {
-    $this->load->model("Objet_model", "objetModel" , true);
+  public function modele($id) {
+			$this->load->model("Objet_model","Objetmodel");
+			$this->Objetmodel->getDetailsBy($id);
+			
+		}
 
-    var_dump($objets = $this->objetModel->getCondition($condition));
-  }
 
 }
 
