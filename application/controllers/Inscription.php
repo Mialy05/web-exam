@@ -25,11 +25,7 @@ class Inscription extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-<<<<<<< HEAD
-    $this->load->model('client_model', 'clientModel');
-=======
 		$this->load->model('Client_model', 'clientModel', true);
->>>>>>> sarobidy
     $this->errorMessage = array (
       "required" => 'Vous devez remplir le champ %s.',
       "min_length" => 'Le %s doit contenir au moins %s caractères.'
@@ -71,7 +67,6 @@ class Inscription extends CI_Controller
       $this->index();
     }
     else {
-<<<<<<< HEAD
       $data = array (
         'idutilisateur' => '',
         'nom' => $this->input->post('nom'),
@@ -97,21 +92,6 @@ class Inscription extends CI_Controller
         );
         $this->load->view('inscription', $data);
       }
-=======
-			$nom= $this->input->post("nom");
-			$prenom= $this->input->post("prenom");
-			$emails= $this->input->post("email");
-			$mdp= $this->input->post("password");
-			$inscrit=$this->clientModel->inscrire(array("nom" => $nom, "prenom"=>$prenom, "email"=>$emails , "password"=>$mdp));
-			// echo $this->clientModel->inscrire(array("nom" => $nom, "prenom"=>$prenom, "email"=>$emails , "password"=>$mdp));
-			if($inscrit==true) {
-				redirect('login');
-			}
-			else {
-				redirect('inscription');
-			}
-			
->>>>>>> sarobidy
     }
   }
 

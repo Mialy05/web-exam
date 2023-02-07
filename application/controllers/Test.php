@@ -33,16 +33,18 @@ class Test extends CI_Controller
 
   public function view() {
     $data = array(
-      'styleSheets' => ['form.css', 'crud-categorie.css'],
+      'styleSheets' => ['home.tmp.css'],
       'title' => 'APP | title provisoire',
-      'component' => 'backoffice/insert-categorie',
+      'component' => 'frontoffice/my-objet'
     );
 
     $this->load->view('templates/body', $data);
   }
 
   public function modele() {
-   
+    $this->load->model("Objet_model", "objetModel" , true);
+
+    var_dump($objets = $this->objetModel->getCondition($condition));
   }
 
 }
