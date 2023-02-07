@@ -32,35 +32,23 @@ class Test extends CI_Controller
   }
 
   public function view() {
-<<<<<<< HEAD
 		$data = array(
       'styleSheets' => ['admin-category.css'],
       'title' => 'liste',
       'component' => 'liste-categorie'
-=======
-    $data = array(
-      'styleSheets' => ['form.css', 'crud-categorie.css'],
-      'title' => 'APP | title provisoire',
-      'component' => 'backoffice/insert-categorie'
->>>>>>> mialisoa
     );
 
     $this->load->view('templates/body', $data);
   }
 
-  public function modele() {
-    // $this->session->set_userdata('name', 'Rakoto'); 
-    // if($this->session->name != null) {
-      // echo $this->session->name;
-    // }
-    // $this->session->unset_userdata('name'); 
-    // if($this->session->name != null) {
-      $this->load->model("Categorie_model", "c");
-      var_dump( $this->c->getAll());
-    }
-  }
+  public function modele($id) {
+			$this->load->model("Objet_model","Objetmodel");
+			$this->Objetmodel->getDetailsBy($id);
+			
+		}
 
 
+}
 
 
 /* End of file Test.php */

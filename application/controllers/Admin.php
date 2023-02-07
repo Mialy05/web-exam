@@ -26,7 +26,13 @@ class Admin extends CI_Controller {
   }
 
   public function index() {
-    //redirect("/home");
+    $data = array(
+      'styleSheets' => [],
+      'title' => 'Admin | Les catégories',
+      'component' => 'backoffice/home',
+    );
+
+    $this->load->view('templates/body', $data);
   }
 
   public function listeCategories() {

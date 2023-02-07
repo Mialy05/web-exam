@@ -32,13 +32,29 @@ class Categoryadmin extends CI_Controller {
   public function index()
   {
     $data = array(
-
+      'styleSheets' => ['admin-categorie.css'],
+      'title' => 'Catégories',
+      'component' => 'backoffice/liste-categorie'
     );
     $this->load->view('templates/body', $data);
   }
 
   public function listeCategories() {
-    $data["categories"] = $this->categorieModel->getAll();
+    $data = array(
+      'styleSheets' => ['admin-category.css'],
+      'title' => 'liste',
+      'component' => 'backoffice/liste-categorie',
+			'categories' => $this->categorieModel->getAll()
+    );
+    $this->load->view("templates/body", $data);
+  }
+
+  public function creer() {
+    $data = array(
+      'styleSheets' => ['form.css', 'crud-categorie.css'],
+      'title' => 'Admin | Nouvelle catégorie',
+      'component' => 'backoffice/insert-categorie'
+    );
     $this->load->view("templates/body", $data);
   }
 
@@ -57,7 +73,7 @@ class Categoryadmin extends CI_Controller {
       $created = $this->categorieModel->insert($form);
 
       if($created == TRUE) {
-        redirect('categoryadmin/');
+        redirect('categoryadmin/listecategories');
       }
       show_error('Erreur lors de l\'insertion de la nouvelle catégorie', 500, 'Oups! Une erreur s\'est produite');
     }
@@ -66,7 +82,7 @@ class Categoryadmin extends CI_Controller {
   public function modifier($id = '')
   {
     if($id == '') {
-      redirect('./listeCategories');
+      redirect('categoryadmin/listecategories');
     }
     $categorie = $this->categorieModel->getBy($id);
     if($categorie == null) {
@@ -86,7 +102,7 @@ class Categoryadmin extends CI_Controller {
   public function update($id = '')
   {
     if($id == '') {
-      redirect('./listeCategories');
+      redirect('categoryadmin/listecategories');
     }
     $this->form_validation->set_rules(
       "nom", "Nom de la catégorie", 
@@ -100,7 +116,7 @@ class Categoryadmin extends CI_Controller {
       $nom = $this->input->post('nom');
       $status = $this->categorieModel->update($id, $nom);
       if($status == TRUE) {
-        redirect('./listeCategories');
+        redirect('categoryadmin/listecategories');
       }
       else {
         show_error('Erreur lors de la modification de la catégorie', 500, 'Oups! Une erreur s\'est produite');
@@ -112,7 +128,7 @@ class Categoryadmin extends CI_Controller {
   public function supprimer($id = '')
   {
     if($id == '') {
-      redirect('./listeCategories');
+      redirect('categoryadmin/listecategories');
     }
     $categorie = $this->categorieModel->getBy($id);
     if($categorie == null) {
@@ -123,7 +139,7 @@ class Categoryadmin extends CI_Controller {
       'styleSheets' => ['crud-categorie.css'],
       'title' => 'Modification catégorie',
       'component' => 'backoffice/delete-categorie',
-      'category' => $categorie
+      'categorie' => $categorie
     );
     
     $this->load->view('templates/body', $data);
@@ -138,7 +154,7 @@ class Categoryadmin extends CI_Controller {
     if($categorie == null) {
       show_error('Erreur lors de la récupération de donnée', 500, 'Oups! Une erreur de donnée s\'est produite');
     }
-      $status = $this->categorieModel->delete($id, $nom);
+      $status = $this->categorieModel->delete($id);
       if($status == TRUE) {
         $data["categories"] = $this->categorieModel->getAll();
         $data['message'] = 'La categorie'.$categorie->nom.' a été supprimée';

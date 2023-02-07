@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  *
- * Model Category_model
+ * Model categorie_model
  *
  * This Model for ...
  * 
  * @package		CodeIgniter
- * @category	Model
+ * @categorie	Model
  * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
  * @link      https://github.com/setdjod/myci-extension/
  * @param     ...
@@ -61,7 +61,7 @@ class Categorie_model extends CI_Model {
 
   public function update($id, $nom) {
     $this->db->where('idcategorie', $id);
-    $query = $this->db->update('category', array('nom' => $nom));
+    $query = $this->db->update('categorie', array('nom' => $nom));
     if($this->db->affected_rows() == 1) {
       return TRUE;
     }
@@ -70,7 +70,7 @@ class Categorie_model extends CI_Model {
 
   public function delete($id) {
     $this->db->where('idcategorie', $id);
-    $query = $this->db->delete('category');
+    $query = $this->db->delete('categorie');
     if($this->db->affected_rows() == 1) {
       return TRUE;
     }

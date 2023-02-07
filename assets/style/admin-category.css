@@ -1,18 +1,41 @@
 .liste {
 	display: flex;
 	align-items: center;
-	
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 5rem;
 }
+
+.tools {
+	width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.link {
+	background: var(--theme);
+    padding: 1em 2em;
+	border-radius: 6px;
+}
+
+.success {
+    background-color: var(--green);
+}
+
+.danger {
+    background-color: var(--red);
+}
+
 .card{
 	width: 20rem;
-	height: 20rem;
-	display: inline-flex;
-	flex-direction: column;
-	justify-content: center;
-	border: solid;
-	border-radius: 1rem;
-	align-items: center;
-	margin-left: 10rem;
-	margin-top: 10rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid;
+    border-radius: 1rem;
+    align-items: center;
 }
 

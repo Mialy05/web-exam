@@ -14,7 +14,7 @@ INSERT INTO utilisateur VALUES("","ionisoa","ionisoa","ionisoa@gmail.com","1234"
 INSERT INTO utilisateur VALUES("","sarobidy","bidy","sarobidy@gmail.com","456");
 INSERT INTO utilisateur VALUES("","mialisoa","mu","mialisoa@gmail.com","789");
 
--- eto
+-- eto 1
 CREATE TABLE categorie(
     idcategorie INTEGER auto_increment,
     nom VARCHAR(50),
@@ -25,6 +25,7 @@ INSERT INTO categorie VALUES("","jeu");
 INSERT INTO categorie VALUES("","vetement");
 INSERT INTO categorie VALUES("","technologie");
 INSERT INTO categorie VALUES("","art");
+<<<<<<< HEAD
 <<<<<<< HEAD:application/sql/script.sql
 INSERT INTO categorie VALUES("","jeux");
 
@@ -33,7 +34,11 @@ INSERT INTO categorie VALUES("","jeux");
 INSERT INTO categorie VALUES("","plante");
 >>>>>>> mialisoa:sql/script.sql
 
+=======
+INSERT INTO categorie VALUES("","plante");
+>>>>>>> c8c7c288258a650d23e1e93b8a75c4c5a4ee401f
 
+-- eto 2
 CREATE TABLE objet(
 	idobjet INTEGER auto_increment,
 	idproprietaire INTEGER,
@@ -81,7 +86,7 @@ insert into photoobjet values("",1,"carte1.jpg",0);
 insert into photoobjet values("",1,"carte2.jpg",1);
 insert into photoobjet values("",1,"carte3.jpg",0);
 insert into photoobjet values("",2,"dee.jpg",0);
-insert into photoobjet values("",2,"dee1.jpg",0);
+-- insert into photoobjet values("",2,"dee1.jpg",0);
 insert into photoobjet values("",2,"dees.jpg",1);
 insert into photoobjet values("",3,"hasard.jpg",0);
 insert into photoobjet values("",3,"hasard1.jpg",1);
@@ -98,11 +103,11 @@ insert into photoobjet values("",9,"virtuel1.jpg",1);
 insert into photoobjet values("",9,"virtuel.jpg",1);
 insert into photoobjet values("",10,"sculpture1.jpg",1);
 insert into photoobjet values("",10,"sculpture2.jpg",0);
-insert into photoobjet values("",10,"sculpture.jpg",0);
+-- insert into photoobjet values("",10,"sculpture.jpg",0);
 insert into photoobjet values("",11,"dessin.jpg",1);
 insert into photoobjet values("",11,"dessin1.jpg",0);
-insert into photoobjet values("",11,"dessin2.jpg",1);
-insert into photoobjet values("",11,"dessin3.jpg",0);
+insert into photoobjet values("",11,"dessin2.jpg",0);
+-- insert into photoobjet values("",11,"dessin3.jpg",0);
 insert into photoobjet values("",12,"chaussure.jpg",1);
 insert into photoobjet values("",12,"chaussure1.jpg",0);
 insert into photoobjet values("",13,"jeans.jpg",1);
@@ -110,7 +115,7 @@ insert into photoobjet values("",13,"jeans1.jpg",0);
 insert into photoobjet values("",14,"veste.jpg",1);
 insert into photoobjet values("",15,"chemise.jpg",1);
 insert into photoobjet values("",15,"chemise2.jpg",0);
-insert into photoobjet values("",15,"chemise3.jpg",0);
+-- insert into photoobjet values("",15,"chemise3.jpg",0);
 
 insert into objetcategorie values(1,5);
 insert into objetcategorie values(2,5);
