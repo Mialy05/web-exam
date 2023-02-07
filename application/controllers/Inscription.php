@@ -25,7 +25,11 @@ class Inscription extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+<<<<<<< HEAD
 		$this->load->model('Client_model', 'clientModel', true);
+=======
+    $this->load->model('client_model', 'clientModel');
+>>>>>>> mialisoa
     $this->errorMessage = array (
       "required" => 'Vous devez remplir le champ %s.',
       "min_length" => 'Le %s doit contenir au moins %s caractères.'
@@ -38,10 +42,10 @@ class Inscription extends CI_Controller
       'title' => 'Inscription',
       'component' => 'inscription',
     );
-    $this->load->view('inscription.php');
+    $this->load->view('inscription', $data);
   }
 
-  public function inscription() {
+  public function inscrire() {
   // form validation  
     $this->form_validation->set_rules(
       "nom", "Nom", 
@@ -60,13 +64,14 @@ class Inscription extends CI_Controller
     );
     $this->form_validation->set_rules(
       "password", "Mot de passe", 
-      "required|min_length[]", 
+      "required|min_length[5]", 
       $this->errorMessage
     );
     if($this->form_validation->run() == FALSE) {
       $this->index();
     }
     else {
+<<<<<<< HEAD
 			$nom= $this->input->post("nom");
 			$prenom= $this->input->post("prenom");
 			$emails= $this->input->post("email");
@@ -80,6 +85,33 @@ class Inscription extends CI_Controller
 				redirect('inscription');
 			}
 			
+=======
+      $data = array (
+        'idutilisateur' => '',
+        'nom' => $this->input->post('nom'),
+        'prenom' => $this->input->post('prenom'),
+        'email' => $this->input->post('email'),
+        'motdepasse' => $this->input->post('password')
+      );
+
+      $inscrit = $this->clientModel->inscrire($data);
+      if($inscrit == TRUE) {
+        redirect('login/utilisateur');
+      }
+      else {
+        $form = array (
+          'styleSheets' => array('login.css'),
+          'title' => 'Inscription',
+          'component' => 'inscription',
+          'idutilisateur' => '',
+          'nom' => $this->input->post('nom'),
+          'prenom' => $this->input->post('prenom'),
+          'email' => $this->input->post('email'),
+          'motdepasse' => $this->input->post('password')
+        );
+        $this->load->view('inscription', $data);
+      }
+>>>>>>> mialisoa
     }
   }
 

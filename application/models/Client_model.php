@@ -38,12 +38,21 @@ class Client_model extends CI_Model {
 
   // $condition = array('email' => ?, 'password' => ?)
   public function auth($condition) {
-    $query = $this->db->get('utilisateur');
+    $query = $this->db->get_where('utilisateur', $condition);
     $auth = $query->result();
-    if($auth == null) {
+
+    if(count($auth) == 0) {
       return -1;
     }
-    return $auth->idutilisateur;
+    return $auth[0]->idutilisateur;
+  }
+
+  public function inscrire($data) {
+    $query = $this->db->insert('utilisateur', $data);
+    if($this->db->affected_rows() == 1) {
+      return TRUE;
+    }
+    return FALSE;
   }
 
 	

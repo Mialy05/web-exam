@@ -32,10 +32,17 @@ class Test extends CI_Controller
   }
 
   public function view() {
+<<<<<<< HEAD
 		$data = array(
       'styleSheets' => ['admin-category.css'],
       'title' => 'liste',
       'component' => 'liste-categorie'
+=======
+    $data = array(
+      'styleSheets' => ['form.css', 'crud-categorie.css'],
+      'title' => 'APP | title provisoire',
+      'component' => 'backoffice/insert-categorie'
+>>>>>>> mialisoa
     );
 
     $this->load->view('templates/body', $data);

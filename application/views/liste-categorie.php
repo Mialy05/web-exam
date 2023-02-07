@@ -1,4 +1,6 @@
-
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 
 	<?= anchor('test'), 'Nouvelle Categorie' ?>
 <div class="liste">

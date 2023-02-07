@@ -11,28 +11,42 @@
     <?php foreach($styleSheets as $style) { ?>
         <link rel="stylesheet" href="<?= base_url() ?>assets/style/<?= $style ?>">
     <?php } ?>
-    <title><?= $title ?></title>
-    <?php $admin ="rakoto@gmail.com" ?>
+    <title>E-Fanakalo | <?= $title ?></title>
+
+    <?php 
+        $emailValue = '';
+        $pwd = '';
+        if(isset($email, $password)) {
+            $emailValue = $email;
+            $pwd = $password;
+        }
+        else {
+            $emailValue = set_value('email');
+        }
+    ?>
 </head>
 <body>
-    <div class="front">
-        <form action="" method="post" class="form login">
+    <div class="container">
+        <?= form_open('login/authentification', 'class=form'); ?>    
             <div class="input-group">
                 <label for="nom">Email</label>
-                <input type="email" name="email" class="input" value="<?= set_value("email"); ?>">
+                <input type="text" name="email" class="input" value="<?= $emailValue; ?>">
             </div>
             <div class="input-group">
                 <label for="password">Mot de passe</label>
-                <input type="password" name="password" class="input">
+                <input type="password" name="password" class="input" value="<?= $pwd ?>">
             </div>
             <div class="tools" id="loginTools">
-                <button class="btn loginBtn" >Se connecter</button>
+                <button class="btn loginBtn" type="submit">Se connecter</button>
                 <p>
                     Pas encore de compte? 
-                    <a href="" class="link">S'inscrire</a>
+                    <?= anchor('inscription', 'S\'inscrire'); ?>
                 </p>
             </div>
-        </form>
+            <div class="message error">
+                <?= validation_errors() ?>
+            </div>
+        <?= form_close() ?>
     </div>
 
 </body>

@@ -14,19 +14,24 @@ INSERT INTO utilisateur VALUES("","ionisoa","ionisoa","ionisoa@gmail.com","1234"
 INSERT INTO utilisateur VALUES("","sarobidy","bidy","sarobidy@gmail.com","456");
 INSERT INTO utilisateur VALUES("","mialisoa","mu","mialisoa@gmail.com","789");
 
+-- eto
 CREATE TABLE categorie(
     idcategorie INTEGER auto_increment,
     nom VARCHAR(50),
     primary key (idcategorie)
 );
 
-INSERT INTO categorie VALUES("","Aliments");
+INSERT INTO categorie VALUES("","jeu");
 INSERT INTO categorie VALUES("","vetement");
 INSERT INTO categorie VALUES("","technologie");
 INSERT INTO categorie VALUES("","art");
+<<<<<<< HEAD:application/sql/script.sql
 INSERT INTO categorie VALUES("","jeux");
 
 -- table vaovao
+=======
+INSERT INTO categorie VALUES("","plante");
+>>>>>>> mialisoa:sql/script.sql
 
 
 CREATE TABLE objet(

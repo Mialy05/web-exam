@@ -24,12 +24,25 @@ class Login extends CI_Controller {
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('client_model', 'clientModel', true);
     $this->errorMessage = array (
     "required" => 'Veuillez remplir le champ %s.'
 		);
   }
 
   public function index()
+  {
+		$data = array(
+      'styleSheets' => ['login.css'],
+      'title' => 'Login',
+      'component' => 'login',
+      'email' => 'admin',
+      'password' =>'admin'
+    );
+		$this->load->view('login', $data);
+  }
+
+  public function utilisateur()
   {
 		$data = array(
       'styleSheets' => ['login.css'],
@@ -62,16 +75,35 @@ class Login extends CI_Controller {
         "name" => $name
       );
       if($name =="admin" && $pwd == "admin") {
-          echo "mety"; 
+        redirect('admin'); 
       }
 			else {
-				echo "Diso";
+				$email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $data = array(
+          'email' => $email,
+          'motdepasse' => $password
+        );
+        $id = $this->clientModel->auth($data);
+        if($id > 0) {
+          $this->session->set_userdata('user', $id);
+          // redirect('home');
+        }
+        else {
+          $this->session->set_flashdata("email", $email);
+          $data = array(
+            'styleSheets' => ['login.css'],
+            'title' => 'Login',
+            'component' => 'login',
+            'email' => $email,
+            'password' => ''
+          );
+          $this->load->view('login', $data);
+        }
 			}
     }
 	}
 }	
-
-
 
 /* End of file Login.php */
 /* Location: ./application/controllers/Login.php */
