@@ -35,23 +35,16 @@ class Test extends CI_Controller
 
   public function view() {
     $data = array(
-      'styleSheets' => ['style.css'],
+      'styleSheets' => ['login.css'],
       'title' => 'APP | title provisoire',
-      'component' => 'welcome_message'
+      'component' => 'login'
     );
 
-    $this->load->view('templates/body', $data);
+    $this->load->view('login', $data);
   }
 
   public function modele() {
-    $this->session->set_userdata('name', 'Rakoto'); 
-    if($this->session->name != null) {
-      echo $this->session->name;
-    }
-    // $this->session->unset_userdata('name'); 
-    if($this->session->name != null) {
-      echo $this->session->name;
-    }
+   
   }
 
 }
