@@ -35,7 +35,9 @@ class Login extends CI_Controller {
 		$data = array(
       'styleSheets' => ['login.css'],
       'title' => 'Login',
-      'component' => 'login'
+      'component' => 'login',
+      'email' => 'admin',
+      'password' =>'admin'
     );
 		$this->load->view('login', $data);
   }
@@ -63,14 +65,14 @@ class Login extends CI_Controller {
         "name" => $name
       );
       if($name =="admin" && $pwd == "admin") {
-          echo "mety"; 
+        redirect('admin'); 
       }
 			else {
 				$email = $this->input->post('email');
         $password = $this->input->post('password');
         $data = array(
           'email' => $email,
-          'password' => $password
+          'motdepasse' => $password
         );
         $id = $this->clientModel->auth($data);
         if($id > 0) {
@@ -79,7 +81,14 @@ class Login extends CI_Controller {
         }
         else {
           $this->session->set_flashdata("email", $email);
-          $this->index();
+          $data = array(
+            'styleSheets' => ['login.css'],
+            'title' => 'Login',
+            'component' => 'login',
+            'email' => $email,
+            'password' => ''
+          );
+          $this->load->view('login', $data);
         }
 			}
     }
