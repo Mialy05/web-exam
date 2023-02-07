@@ -46,12 +46,23 @@ class Objet_model extends CI_Model {
 
 	public function  getDetailsBy($id) {
     $query = $this->db->get_where("detailobjet",array("idobjet" => $id));
-    return $query->result();
-  }
+		$reponse = $query->result();
+    if(count($reponse) == 0) {
+      return null;
+    }
+    else {
+      return $reponse[0];
+		}
+	}
 
 	public function getPhotos($id) {
 		$query = $this->db->get_where("photoobjet",array("idobjet" => $id));
-    return $query->result();
+		$reponse = $query->result();
+    if(count($reponse) == 0) {
+      return null;
+    }
+    else {
+      return $reponse[0];
 	}
   // ------------------------------------------------------------------------
 
