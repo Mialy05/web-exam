@@ -6,7 +6,7 @@
     <div class="title">
         <h1>Nouvelle catégorie</h1>
     </div>
-    <?= form_open('controller/create', 'class=form'); ?>    
+    <?= form_open('categoryadmin/creation', 'class=form'); ?>    
         <div class="input-group">
             <label for="nom">Nom</label>
             <input type="text" name="nom" class="input" value="<?= set_value('nom') ?>">

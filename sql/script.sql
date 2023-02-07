@@ -11,3 +11,18 @@ CREATE TABLE utilisateur(
 );
 
 INSERT INTO utilisateur VALUES("","ionisoa","ionisoa","ionisoa@gmail.com","1234");
+
+-- eto
+CREATE TABLE categorie(
+    idcategorie INTEGER auto_increment,
+    nom VARCHAR(50),
+    primary key (idcategorie)
+);
+
+INSERT INTO categorie VALUES("","jeu");
+INSERT INTO categorie VALUES("","vetement");
+INSERT INTO categorie VALUES("","technologie");
+INSERT INTO categorie VALUES("","art");
+INSERT INTO categorie VALUES("","plante");
+
+
