@@ -32,6 +32,11 @@ class Login extends CI_Controller {
 
   public function index()
   {
+
+  }
+
+  public function admin()
+  {
 		$data = array(
       'styleSheets' => ['login.css'],
       'title' => 'Login',
@@ -75,6 +80,7 @@ class Login extends CI_Controller {
         "name" => $name
       );
       if($name =="admin" && $pwd == "admin") {
+        $this->session->set_userdata('user', -1);
         redirect('admin'); 
       }
 			else {
@@ -87,7 +93,7 @@ class Login extends CI_Controller {
         $id = $this->clientModel->auth($data);
         if($id > 0) {
           $this->session->set_userdata('user', $id);
-          // redirect('home');
+          redirect('site/');
         }
         else {
           $this->session->set_flashdata("email", $email);
@@ -103,6 +109,17 @@ class Login extends CI_Controller {
 			}
     }
 	}
+
+  public function logout() {
+    $idSession = $this->session->user; 
+    $this->session->unset_userdata('user');
+    if($idSession > 0) {
+      redirect('login/utilisateur');
+    }
+    else {
+      redirect('login/admin');
+    }
+  }
 }	
 
 /* End of file Login.php */

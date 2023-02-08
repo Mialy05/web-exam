@@ -1,5 +1,5 @@
 .form {
-    padding: 10rem 2rem;
+    padding: 8rem 2rem;
     width: 20rem;
     background-color: rgba(118, 188, 231, 0.633);
     border: 5px solid white;
@@ -25,6 +25,7 @@
     grid-template-columns: 45% 55%;
     margin-top: 5%;
     margin-bottom: 5%;
+    align-items: center;
 }
 
 .btn {
@@ -34,7 +35,7 @@
     border: 3px solid white;
     background-color: lightpink;
     color: white;
-    font-weight: bold;
+    font-family: font-theme;
 }
 
 input, select {
