@@ -35,17 +35,14 @@ class Statistique extends CI_Controller
     public function utilisateur (){
         $data['total'] = $this->clientModel.getTotalInscrit();
 
-        // $data['total'] = $this->clientModel.getTotalInscrit();
-
-        // $data = array(
-        //     'styleSheets' => ['listeproposition.css'],
-        //     'title' => 'Modification catégorie',
-        //     'component' => 'backoffice/statistique-user',
-        //     'site' => 'admin',
-                "total"=>$this->clientModel.getTotalInscrit();
-        //   );
+         $data = array(
+             'styleSheets' => ['listeproposition.css'],
+             'title' => 'Modification catégorie',
+             'component' => 'backoffice/statistique-user',
+             'site' => 'admin'
+           );
 
         
-        // $this->load->view('templates/body', $data);
+         $this->load->view('templates/body', $data);
     }
 }

@@ -33,13 +33,12 @@ class Test extends CI_Controller
 
   public function view() {
 		
-    $data = array(
-      'styleSheets' => ['listeproposition.css'],
-      'title' => 'Modification catégorie',
-      'component' => 'backoffice/statistique-user',
-      'site' => 'admin',
-    );
-
+        $data = array(
+       'styleSheets' => ['listeproposition.css'],
+       'title' => 'Modification catégorie',
+       'component' => 'backoffice/statistique-user',
+       'site' => 'admin',
+     );
     $this->load->view('templates/body', $data);
   }
 
@@ -47,7 +46,13 @@ class Test extends CI_Controller
 			$this->load->model("Objet_model","Objetmodel");
 			$this->Objetmodel->getDetailsBy($id);
 			
-		}
+	}
+
+  public function total() {
+
+  //   $this->load->model("Client_model","clientmodel");
+  //   return var_dump($this->clientmodel->getTotalInscrit());
+  // }
 
 
 }
