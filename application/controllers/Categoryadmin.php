@@ -117,12 +117,9 @@ class Categoryadmin extends CI_Controller {
     else {
       $nom = $this->input->post('nom');
       $status = $this->categorieModel->update($id, $nom);
-      if($status == TRUE) {
-        redirect('categoryadmin/listecategories');
-      }
-      else {
-        show_error('Erreur lors de la modification de la catégorie', 500, 'Oups! Une erreur s\'est produite');
-      }
+
+      redirect('categoryadmin/listecategories');
+
     }
 
   }

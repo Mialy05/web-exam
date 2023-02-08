@@ -16,6 +16,9 @@
             <?= anchor('proposition/mesAttente', 'Proposition') ?>
         </li>
         <li class="nav-item">
+            <?= anchor('objet/search', 'Rechercher') ?>
+        </li>
+        <li class="nav-item">
             <?= anchor('login/logout', 'Se déconnecter') ?>
         </li>
     </ul>

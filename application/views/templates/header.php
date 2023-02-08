@@ -17,6 +17,7 @@
     <?php  
         if($site == 'user') {
             $this->load->view('frontoffice/navbar');
+            
         }
         else if($site == 'admin') {
             $this->load->view('backoffice/navbar');

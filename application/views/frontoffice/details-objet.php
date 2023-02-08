@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="right-side">
             <div class="data">
                 <div class="subtitle">Propriétaire</div>
-                <div class="info name" ><?= $categorie->proprietaire ?></div>
+                <div class="info name" ><?= $categorie->nom ?></div>
             </div>
             <div class="data">
                 <div class="subtitle">Description</div>

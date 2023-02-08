@@ -67,7 +67,7 @@ class Objet extends Basecontroller
 			'title' => 'Rechercher',
 			'component' => 'frontoffice/recherche',
 			'site' => 'user',
-			'categories'=> $this->Categorymodel->getAll(),
+			'categories'=> $this->Categorymodel->getAll()
 		  );
 		  $this->load->view('templates/body', $data);
 	}
