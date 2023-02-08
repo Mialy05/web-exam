@@ -183,6 +183,7 @@ select historique.debut, historique.idhistorique,objet.idobjet ,utilisateur.idut
 from historique
 join utilisateur on (historique.idproprietaire=utilisateur.idutilisateur)
 join objet on (historique.idobjet=objet.idobjet);
+
 --view detailobjet
 create view detailobjet as 
 select objet.idobjet, titre, description, prix, idproprietaire, u.nom from objet 
