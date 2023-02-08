@@ -32,10 +32,12 @@ class Test extends CI_Controller
   }
 
   public function view() {
-		$data = array(
-      'styleSheets' => ['admin-category.css'],
-      'title' => 'liste',
-      'component' => 'liste-categorie'
+		
+    $data = array(
+      'styleSheets' => ['listeproposition.css'],
+      'title' => 'Modification catégorie',
+      'component' => 'backoffice/statistique-user',
+      'site' => 'admin',
     );
 
     $this->load->view('templates/body', $data);
