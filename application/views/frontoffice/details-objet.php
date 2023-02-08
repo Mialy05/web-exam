@@ -21,9 +21,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="info"><?= $categorie->prix ?> MGA</div>
             </div>
             <?php if($form == TRUE) {
-                echo form_open('', array('class' => 'form'));
+                echo form_open('proposition/proposer', array('class' => 'form'));
             ?>
-                <select name="categorie" class="input">
+                <input type="hidden" name="objetreceiver" value="<?= $categorie->idobjet; ?>" >
+                <input type="hidden" name="idreceiver" value="<?= $categorie->idproprietaire; ?>" >
+                <select name="objetsender" class="input">
                     <?php foreach($myobjects as $object) { ?>
                         <option value="<?= $object->idobjet ?>"><?= $object->titre ?></option>
                     <?php } ?>

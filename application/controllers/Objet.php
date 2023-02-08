@@ -142,38 +142,8 @@ class Objet extends Basecontroller
 		}
 	
 	  }
-	
-	//   public function uploadFiles() {
-	// 	$data = array();
-	
-	// 	$count = count($_FILES['photos']['name']);
-		
-	// 	for($i=0;$i<$count;$i++){
-	  
-	// 	  if(!empty($_FILES['photos']['name'][$i])){
-	// 		$_FILES['file']['name'] = $_FILES['photos']['name'][$i];
-	// 		$_FILES['file']['type'] = $_FILES['photos']['type'][$i];
-	// 		$_FILES['file']['tmp_name'] = $_FILES['photos']['tmp_name'][$i];
-	// 		$_FILES['file']['error'] = $_FILES['photos']['error'][$i];
-	// 		$_FILES['file']['size'] = $_FILES['photos']['size'][$i];
-	
-	// 		$config['upload_path'] = './assets/image'; 
-	// 		$config['allowed_types'] = 'jpg|jpeg|png|gif';
-	// 		$config['max_size'] = '5000';
-	// 		$config['file_name'] = $_FILES['photos']['name'][$i];
-	 
-	// 		$this->load->library('upload',$config); 
-	  
-	// 		$uploadData = null;
-	// 		if($this->upload->do_upload('file')){
-	// 		  $uploadData = $this->upload->data();
-	// 		}
-	// 		$data[] = $uploadData;
-	
-	// 		return $data;
-	// 	  }
-	// 	}
-	//   }
+
+
 }
 
 

@@ -85,7 +85,7 @@ CREATE TABLE proposition(
 );
 -- satut 0 raha mbola miandry acceptation, -5 raha mbola tsy misy , 5 ref mis
 insert into proposition values("",1,1,2,3,"2023-01-05 22:35:00",0);
-insert into proposition values("",3,10,1,6,"2023-02-07 12:20:10",5);
+insert into proposition values("",3,5,1,3,"2023-02-07 12:20:10",0);
 insert into proposition values("",2,12,3,1,"2023-02-04 10:35:00",-5);
 ----Historique
 CREATE TABLE historique(
@@ -177,7 +177,7 @@ insert into objetcategorie values(14,2);
 insert into objetcategorie values(15,2);
 
 
------view detailsobjet
+-----view detailshistorique
 CREATE VIEW detailshistorique as
 select historique.debut, historique.idhistorique,objet.idobjet ,utilisateur.idutilisateur, utilisateur.nom as proprietere
 from historique
@@ -191,9 +191,14 @@ join utilisateur as u on idproprietaire=u.idutilisateur
 join photoobjet as p on objet.idobjet=p.idobjet
 where p.typephoto = 1;
 
-select us.nom as nomSender
-from proposition
-join utilisateur as us on idsender=us.idutilisateur  ;
+-- view detailsproposition
+create view detailsproposition as
+select p.jour, p.idproposition, p.idsender, us.nom as sender, p.idreceiver, ur.nom as receiver, os.titre as objetsender, o2.titre as objetreceiver, p.statut
+from proposition as p
+join utilisateur as us on idsender=us.idutilisateur  
+join utilisateur as ur on idreceiver = ur.idutilisateur 
+join objet as os on idobjetsender = os.idobjet
+join objet as o2 on idobjetreceiver = o2.idobjet;
 
 -- view details 
 create or replace view detailObjetCategorie as

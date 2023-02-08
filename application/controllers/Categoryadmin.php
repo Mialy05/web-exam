@@ -125,45 +125,6 @@ class Categoryadmin extends CI_Controller {
 
   }
 
-  public function supprimer($id = '')
-  {
-    if($id == '') {
-      redirect('categoryadmin/listecategories');
-    }
-    $categorie = $this->categorieModel->getBy($id);
-    if($categorie == null) {
-      show_error('Erreur lors de la récupération de donnée', 500, 'Oups! Une erreur de donnée s\'est produite');
-    }
-    
-    $data = array(
-      'styleSheets' => ['crud-categorie.css'],
-      'title' => 'Modification catégorie',
-      'component' => 'backoffice/delete-categorie',
-      'categorie' => $categorie
-    );
-    
-    $this->load->view('templates/body', $data);
-  }
-
-  public function delete($id = '')
-  {
-    if($id == '') {
-      redirect('./listeCategories');
-    }
-    $categorie = $this->categorieModel->getBy($id);
-    if($categorie == null) {
-      show_error('Erreur lors de la récupération de donnée', 500, 'Oups! Une erreur de donnée s\'est produite');
-    }
-      $status = $this->categorieModel->delete($id);
-      if($status == TRUE) {
-        $data["categories"] = $this->categorieModel->getAll();
-        $data['message'] = 'La categorie'.$categorie->nom.' a été supprimée';
-        $this->load->view("templates/body", $data);
-      }
-      else {
-        show_error('Erreur lors de la modification de la catégorie', 500, 'Oups! Une erreur s\'est produite');
-      }
-  }
 
 }
 

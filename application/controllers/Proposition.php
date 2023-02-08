@@ -18,27 +18,51 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Proposition extends CI_Controller
+require_once APPPATH.'controllers/Basecontroller.php'; 
+
+class Proposition extends Basecontroller
 {
     
   public function __construct()
   {
     parent::__construct();
-		
+    $this->load->model('Proposition_model', 'propositionModel');
   }
 
   public function index()
   {
-    // 
+    $this->mesAttente();
   }
-	public function listeProposition() {
+
+  public function proposer() {
+    $idsender = $this->session->user;
+    $idobjetsender = $this->input->post('objetsender');
+    $idreceiver = $this->input->post('idreceiver');
+    $idobjetreceiver = $this->input->post('objetreceiver');
+    
+    $this->propositionModel->proposer($idsender, $idobjetsender, $idreceiver, $idobjetreceiver);
+    redirect('objet/myobjets');
+  }
+
+	public function mesAttente() {
     $data = array(
-      'styleSheets' => ['listeproposition.css'],
-      'title' => 'Mes proposition',
-      'component' => 'liste-proposition'
-			
+      'styleSheets' => ['frontoffice/listeproposition.css'],
+      'title' => 'Mes propositions',
+      'component' => 'frontoffice/liste-proposition',
+      'site' => 'user', 
+      'propositions' => $this->propositionModel->getPropositionEnAttenteOf($this->session->user)
     );
     $this->load->view("templates/body", $data);
+  }
+
+  public function accepter($id) {
+    $this->propositionModel->accepter($id);
+    redirect('proposition/');
+  }
+
+  public function refuser($id) {
+    $this->propositionModel->refuser($id);
+    redirect('proposition/');
   }
 }
 
