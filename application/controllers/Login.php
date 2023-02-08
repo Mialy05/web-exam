@@ -68,7 +68,7 @@ class Login extends CI_Controller {
       $this->errorMessage
     );
     if($this->form_validation->run() == FALSE) {
-       $this->index();;
+       $this->index();
 			
 		}
     else {

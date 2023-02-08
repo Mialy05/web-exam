@@ -10,7 +10,7 @@
 			<div class="card">
 				<p><?= $categories[$i]->nom; ?></p>
 					<div class="tools">
-						<?= anchor('categoryadmin/modifier/'.$categories[$i]->idcategorie, 'Modifier', ['class' => 'btn btnLink']); ?>
+						<?= anchor('categoryadmin/modifier/'.$categories[$i]->idcategorie, 'Modifier', ['class' => 'btn btnLink success']); ?>
 					</div>
 			</div>
 	<?php } ?>

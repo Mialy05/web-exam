@@ -31,19 +31,13 @@ class Categoryadmin extends CI_Controller {
 
   public function index()
   {
-    $data = array(
-      'styleSheets' => ['admin-categorie.css','navbar.css'],
-      'title' => 'Catégories',
-      'component' => 'backoffice/liste-categorie',
-      'site' => 'admin'
-    );
-    $this->load->view('templates/body', $data);
+    $this->listeCategories();
   }
 
   public function listeCategories() {
     $data = array(
       'styleSheets' => ['admin-category.css', 'navbar.css'],
-      'title' => 'liste',
+      'title' => 'Gestion des catégories',
       'component' => 'backoffice/liste-categorie',
       'site' => 'admin',
 			'categories' => $this->categorieModel->getAll()
@@ -69,14 +63,12 @@ class Categoryadmin extends CI_Controller {
       $this->errorMessage
     );
     if($this->form_validation->run() == FALSE) {
-       $this->index();
+       $this->creer();
 		}
     else {
       $form = array('nom' => $this->input->post('nom'));
       $created = $this->categorieModel->insert($form);
-
       redirect('categoryadmin/listecategories');
-      
     }
   }
 

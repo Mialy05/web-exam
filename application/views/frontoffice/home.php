@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="liste">
             <?php foreach($objets as $objet) { ?>
                     <div class="card">
-                        <img src="<?= base_url().'/assets/image/code.png' ?>" alt="photo">
+                        <img src="<?= base_url().'/assets/image/'.$objet->photo ?>" alt="photo">
                    
                     <div class="details">
                         <p class="name"><?= $objet->titre ?></p>
