@@ -201,7 +201,12 @@ join objet as os on idobjetsender = os.idobjet
 join objet as o2 on idobjetreceiver = o2.idobjet;
 
 -- view details 
+-- create or replace view detailObjetCategorie as
+-- select objetcategorie.idcategorie, objetcategorie.idobjet ,obj.titre from objetcategorie 
+-- join categorie as categ on objetcategorie.idcategorie=categ.idcategorie 
+-- join objet as obj on objetcategorie.idobjet=obj.idobjet;
+
 create or replace view detailObjetCategorie as
-select objetcategorie.idcategorie, objetcategorie.idobjet ,obj.titre from objetcategorie 
+select objetcategorie.idcategorie, obj.*  from objetcategorie 
 join categorie as categ on objetcategorie.idcategorie=categ.idcategorie 
-join objet as obj on objetcategorie.idobjet=obj.idobjet;
+join detailobjet as obj on objetcategorie.idobjet=obj.idobjet;

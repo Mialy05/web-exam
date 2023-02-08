@@ -45,19 +45,12 @@ class Statistique extends Basecontroller
              'total'=>$total
            );
 
-        $data = array(
-            'styleSheets' => ['listeproposition.css'],
-            'title' => 'Modification catégorie',
-            'component' => 'backoffice/statistique-user',
-            'site' => 'admin',
-            "total"=> $this->clientModel->getTotalInscrit()
-          );
-        
          $this->load->view('templates/body', $data);
     }
 
-    public function echange(){
-      $echange = $this->objetModel->getTotalEchange();
+    public function echange($statues){
+      $echange = $this->objetModel->getTotalEchange(5);
+
       $data = array(
         'styleSheets' => ['backoffice/menu-statistique.css'],
         'title' => 'Statistique des echanges',
@@ -68,5 +61,19 @@ class Statistique extends Basecontroller
       $this->load->view('templates/body', $data);
     }
     
+    public function stat(){
+      $echange = $this->objetModel->getTotalEchange(5);
+      $inscrits = $this->clientModel->getTotalInscrit();
+
+      $data = array(
+        'styleSheets' => ['backoffice/statistique.css', 'navbar.css'],
+        'title' => 'Statistique',
+        'component' => 'backoffice/statistique',
+        'site' => 'admin',
+        'echanges'=>$echange,
+        'inscrits' => $inscrits
+      );
+      $this->load->view('templates/body', $data);
+    }
 
 }

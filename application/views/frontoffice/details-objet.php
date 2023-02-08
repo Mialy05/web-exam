@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div id="details">
-    <div class="title"><h1>Détails sur <?= $categorie->titre ?></h1></div>
+    <div class="title"><h1>A propos de <?= $categorie->titre ?></h1></div>
     <div class="container">
         <div class="left-side">
             <img src="<?= base_url() ?>/assets/image/code.png" alt="Photo principale">
@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo form_open('proposition/proposer', array('class' => 'form'));
             ?>
                 <input type="hidden" name="objetreceiver" value="<?= $categorie->idobjet; ?>" >
-                <input type="hidden" name="idreceiver" value="<?= $categorie->idproprietaire; ?>" >
+                <input type="hidden" name="idreceiver" value="<?= $categorie->idproprietaire; ?>" class="input">
                 <select name="objetsender" class="input">
                     <?php foreach($myobjects as $object) { ?>
                         <option value="<?= $object->idobjet ?>"><?= $object->titre ?></option>

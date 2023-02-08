@@ -5,6 +5,7 @@
     margin: auto;
     box-shadow: 2px 2px 2px 2px gray;
     display: flex;
+	flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
@@ -19,3 +20,4 @@
 	display: flex;
     gap: 1em;
 }
+

@@ -47,15 +47,7 @@ class Test extends CI_Controller
 			$this->Objetmodel->search($category,$motCle);
 			
 	}
-  public function total() {
 
-  //   $this->load->model("Client_model","clientmodel");
-  //   return var_dump($this->clientmodel->getTotalInscrit());
-  // }
-
-    public function test() {
-      echo date('Y-m-d H:i:s');
-    }
 
 }
 

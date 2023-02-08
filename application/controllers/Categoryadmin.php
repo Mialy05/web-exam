@@ -32,18 +32,20 @@ class Categoryadmin extends CI_Controller {
   public function index()
   {
     $data = array(
-      'styleSheets' => ['admin-categorie.css'],
+      'styleSheets' => ['admin-categorie.css','navbar.css'],
       'title' => 'Catégories',
-      'component' => 'backoffice/liste-categorie'
+      'component' => 'backoffice/liste-categorie',
+      'site' => 'admin'
     );
     $this->load->view('templates/body', $data);
   }
 
   public function listeCategories() {
     $data = array(
-      'styleSheets' => ['admin-category.css'],
+      'styleSheets' => ['admin-category.css', 'navbar.css'],
       'title' => 'liste',
       'component' => 'backoffice/liste-categorie',
+      'site' => 'admin',
 			'categories' => $this->categorieModel->getAll()
     );
     $this->load->view("templates/body", $data);
@@ -51,8 +53,9 @@ class Categoryadmin extends CI_Controller {
 
   public function creer() {
     $data = array(
-      'styleSheets' => ['form.css', 'crud-categorie.css'],
+      'styleSheets' => ['form.css', 'crud-categorie.css', 'navbar.css'],
       'title' => 'Admin | Nouvelle catégorie',
+      'site' => 'admin',
       'component' => 'backoffice/insert-categorie'
     );
     $this->load->view("templates/body", $data);
@@ -72,10 +75,8 @@ class Categoryadmin extends CI_Controller {
       $form = array('nom' => $this->input->post('nom'));
       $created = $this->categorieModel->insert($form);
 
-      if($created == TRUE) {
-        redirect('categoryadmin/listecategories');
-      }
-      show_error('Erreur lors de l\'insertion de la nouvelle catégorie', 500, 'Oups! Une erreur s\'est produite');
+      redirect('categoryadmin/listecategories');
+      
     }
   }
 
@@ -90,9 +91,10 @@ class Categoryadmin extends CI_Controller {
     }
     
     $data = array(
-      'styleSheets' => ['form.css', 'crud-categorie.css'],
+      'styleSheets' => ['form.css', 'crud-categorie.css', 'navbar.css'],
       'title' => 'Modification catégorie',
       'component' => 'backoffice/update-categorie',
+      'site' => 'admin',
       'category' => $categorie
     );
     

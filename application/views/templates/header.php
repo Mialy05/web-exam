@@ -14,3 +14,14 @@
     <title><?= $title ?></title>
 </head>
 <body>
+    <?php  
+        if($site == 'user') {
+            $this->load->view('frontoffice/navbar');
+        }
+        else if($site == 'admin') {
+            $this->load->view('backoffice/navbar');
+        }
+    ?>
+    <div id="body">
+
+   

@@ -46,7 +46,7 @@ class Proposition extends Basecontroller
 
 	public function mesAttente() {
     $data = array(
-      'styleSheets' => ['frontoffice/listeproposition.css'],
+      'styleSheets' => ['frontoffice/listeproposition.css', 'navbar.css'],
       'title' => 'Mes propositions',
       'component' => 'frontoffice/liste-proposition',
       'site' => 'user', 
