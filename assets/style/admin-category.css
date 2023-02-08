@@ -20,13 +20,7 @@
 	border-radius: 6px;
 }
 
-.success {
-    background-color: var(--green);
-}
 
-.danger {
-    background-color: var(--red);
-}
 
 .card{
 	width: 20rem;

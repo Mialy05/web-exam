@@ -111,14 +111,7 @@ class Objet extends Basecontroller
 	
 	  }
 
-	public function updateProprietaire($idobjet, $idprorietaire) {
-		$this->db->where('idobjet', $idobjet);
-		$query = $this->db->update('objet', array('idproprietaire' => $idprorietaire));
-		if($this->db->affected_rows() == 1) {
-			return TRUE;
-		}
-		show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
-	}
+
 }
 
 

@@ -31,7 +31,7 @@ class Proposition extends Basecontroller
 
   public function index()
   {
-    // 
+    $this->mesAttente();
   }
 
   public function proposer() {
@@ -44,14 +44,25 @@ class Proposition extends Basecontroller
     redirect('objet/myobjets');
   }
 
-	public function listeProposition() {
+	public function mesAttente() {
     $data = array(
-      'styleSheets' => ['listeproposition.css'],
-      'title' => 'Mes proposition',
-      'component' => 'liste-proposition'
-			
+      'styleSheets' => ['frontoffice/listeproposition.css'],
+      'title' => 'Mes propositions',
+      'component' => 'frontoffice/liste-proposition',
+      'site' => 'user', 
+      'propositions' => $this->propositionModel->getPropositionEnAttenteOf($this->session->user)
     );
     $this->load->view("templates/body", $data);
+  }
+
+  public function accepter($id) {
+    $this->propositionModel->accepter($id);
+    redirect('proposition/');
+  }
+
+  public function refuser($id) {
+    $this->propositionModel->refuser($id);
+    redirect('proposition/');
   }
 }
 

@@ -23,6 +23,7 @@ class Proposition_model extends CI_Model {
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('Objet_model', 'objetModel');
   }
 
   // ------------------------------------------------------------------------
@@ -34,10 +35,19 @@ class Proposition_model extends CI_Model {
     // 
   }
 
+  public function getPropositionEnAttenteOf($user) {
+    $condition = [
+      'idreceiver' => $user,
+      'statut' => 0
+    ];
+    $query = $this->db->get_where('detailsproposition', $condition);
+    return $query->result();
+  }
+
   public function getById($id) {
-    $this->db->where('idproposition', $id);
-    $query = $this->db->get('proposition');
-    if(count($query) != 0) {
+    $query = $this->db->get_where('proposition', array('idproposition'=> $id));
+
+    if(count($query->result()) == 0) {
       return null;
     }
     return $query->result()[0];
@@ -55,24 +65,21 @@ class Proposition_model extends CI_Model {
     );
 
     $this->db->insert('proposition', $data);
-    if($this->db->affected_rows() == 1) {
-      return TRUE;
-    }
-    show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
   }
 
   public function accepter($idproposition) {
     $proposition = $this->getById($idproposition);
+    var_dump($proposition);
     if($proposition == null) {
       return FALSE;
     }
     else {
       $jour = date('Y-m-d H:i:s');
-      $this->updateStatus($proposition->idproposition);
-      $this->objetModel->insertHistorique($proposition->idobjetreceiver, $proposition->sender, $jour);
-      $this->objetModel->insertHistorique($proposition->idobjetsender, $proposition->receiver, $jour);
-      $this->objetModel->updateProprietaire($idobjetsender, $idreceiver);
-      $this->objetModel->updateProprietaire($idobjetreceiver, $idsender);
+      $this->updateStatus($proposition->idproposition, 5);
+      $this->objetModel->insertHistorique($proposition->idobjetreceiver, $proposition->idsender, $jour);
+      $this->objetModel->insertHistorique($proposition->idobjetsender, $proposition->idreceiver, $jour);
+      $this->objetModel->updateProprietaire($proposition->idobjetsender, $proposition->idreceiver);
+      $this->objetModel->updateProprietaire($proposition->idobjetreceiver, $proposition->idsender);
     }
   }
 
@@ -80,17 +87,9 @@ class Proposition_model extends CI_Model {
     $this->updateStatus($idproposition, -5);
   }
 
-  public function supprimer($idproposition) {
-    $this->updateStatus($idproposition, -1);
-  }
-
   public function updateStatus($id, $status) {
     $this->db->where('idproposition', $id);
-    $query = $this->db->update('proposition', array('status' => $status));
-    if($this->db->affected_rows() == 1) {
-      return TRUE;
-    }
-    show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
+    $query = $this->db->update('proposition', array('statut' => $status));
   }
 
 

@@ -202,6 +202,12 @@ class Objet_model extends CI_Model {
     show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
 
   }
+
+  public function updateProprietaire($idobjet, $idprorietaire) {
+		$this->db->where('idobjet', $idobjet);
+		$query = $this->db->update('objet', array('idproprietaire' => $idprorietaire));
+		
+	}
   // ------------------------------------------------------------------------
   
 }

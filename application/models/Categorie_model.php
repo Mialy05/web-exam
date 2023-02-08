@@ -53,28 +53,16 @@ class Categorie_model extends CI_Model {
 
   public function insert($data) {
     $query = $this->db->insert('categorie', $data);
-    if($this->db->affected_rows() == 1) {
-      return TRUE;
-    }
-    return FALSE;
   }
 
   public function update($id, $nom) {
     $this->db->where('idcategorie', $id);
     $query = $this->db->update('categorie', array('nom' => $nom));
-    if($this->db->affected_rows() == 1) {
-      return TRUE;
-    }
-    return FALSE;
   }
 
   public function delete($id) {
     $this->db->where('idcategorie', $id);
     $query = $this->db->delete('categorie');
-    if($this->db->affected_rows() == 1) {
-      return TRUE;
-    }
-    return FALSE;
   }
 
 }  

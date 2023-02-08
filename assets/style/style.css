@@ -25,3 +25,35 @@ a {
     text-decoration: none;
 }
 
+.title {
+    text-align: center;
+}
+
+.success {
+    background-color: var(--green);
+}
+
+.danger {
+    background-color: var(--red);
+}
+
+.btnLink {
+    display: flex;
+    width: 10rem;
+    height: 3rem;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+}
+
+.success:hover {
+    background-color: green;
+}
+
+.danger:hover {
+    background: #b50d0d;
+}
+
