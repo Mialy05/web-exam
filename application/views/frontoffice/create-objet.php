@@ -29,7 +29,7 @@
                 <input type='file' name='photo1' class="input">
             </div>    
         <div class="input-group">
-            <label for="photos">Autres photos</label>
+            <label for="photos[]">Autres photos</label>
             <input type='file' name='photos[]' class="input" multiple="">
         </div>   
         <div class="tools" id="loginTools">

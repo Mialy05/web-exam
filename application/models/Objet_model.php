@@ -75,6 +75,9 @@ class Objet_model extends CI_Model {
       foreach ($categories as $categorie) {
         $this->insertCategorie($id, $categorie);
       }
+      // historique
+      $this->insertHistorique($id, $proprietaire, date('Y-m-d H:i:s'));
+
       $status = true;
       $status = $this->uploadFiles($photo1, 1, $id);
       if($status == true) {
@@ -146,7 +149,7 @@ class Objet_model extends CI_Model {
       'photo' => $path,
       'typephoto' => $type
     );
-		$query = $this->db->insert('photoobjet', $data);
+		// $query = $this->db->insert('photoobjet', $data, now());
     if($this->db->affected_rows() == 1) {
       return true;
     }
@@ -169,6 +172,22 @@ class Objet_model extends CI_Model {
     }
     show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
 
+
+  }
+
+  public function insertHistorique($idobjet, $idprorietaire, $jour) {
+    $data = array (
+      'idhistorique' => '',
+      'idobjet' => $idobjet,
+      'idproprietaire' => $idprorietaire,
+      'debut' => $jour  
+    );
+
+    $this->db->insert('historique', $data);
+    if($this->db->affected_rows() == 1) {
+      return TRUE;
+    }
+    show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
 
   }
   // ------------------------------------------------------------------------

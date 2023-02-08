@@ -49,6 +49,9 @@ class Test extends CI_Controller
 			
 		}
 
+    public function test() {
+      echo date('Y-m-d H:i:s');
+    }
 
 }
 
