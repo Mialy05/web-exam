@@ -59,6 +59,18 @@ class Objet_model extends CI_Model {
     return $this->db->get_where('objet', $condition)->result();
   }
 
+	public function search($idcategory,$motCle) {
+		$query= $this->db->like('titre',$motCle);
+
+		if($idcategory==0) {
+			return $this->db->get('objet');
+		}
+		else{
+			$query= $this->db->get_where('select idobjet from categorie 
+			join objetcategorie as objcat on idcategorie=objcat.idcategorie',['idcategorie'=>$idcategory]);
+		}
+	}
+
   public function create($title, $description, $prix, $proprietaire, $photo1, $photos, $categories) {
     $data = array (
       'idobjet' => '',
