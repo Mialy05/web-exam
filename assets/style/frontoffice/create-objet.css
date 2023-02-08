@@ -5,3 +5,8 @@
     display: grid;
     place-items: center;
 }
+
+.form {
+    padding: 6rem 2rem;
+    width: 30rem;
+}

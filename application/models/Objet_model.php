@@ -46,12 +46,12 @@ class Objet_model extends CI_Model {
 
   public function getDetailOthersObjetOf($iduser) {
     $condition = array('idproprietaire !=' => $iduser);
-    return $this->objetModel->getCondition($condition);
+    return $this->getCondition($condition);
   }
 
   public function getDetailObjetOf($iduser) {
     $condition = array('idproprietaire =' => $iduser);
-    return $this->objetModel->getCondition($condition);
+    return $this->getCondition($condition);
   }
 
   public function getObjetOf($iduser) {
@@ -59,59 +59,75 @@ class Objet_model extends CI_Model {
     return $this->db->get_where('objet', $condition)->result();
   }
 
-  // public function create($title, $description, $prix, $proprietaire, $photos) {
-  //   $data = array (
-  //     'idobjet' => '',
-  //     'idproprietaire' => $proprietaire,
-  //     'titre' => $title,
-  //     'description' => $description,
-  //     'prix' => $prix
-  //   );
+	public function search($idcategory,$motCle) {
+		$query= $this->db->like('titre',$motCle);
 
-  // $this->db->insert('objet', $data);
-  //   $id = $this->db->insert_id('objet');
+		if($idcategory==0) {
+			return $this->db->get('objet');
+		}
+		else{
+			$query= $this->db->get_where('select idobjet from categorie 
+			join objetcategorie as objcat on idcategorie=objcat.idcategorie',['idcategorie'=>$idcategory]);
+		}
+	}
+
+  public function create($title, $description, $prix, $proprietaire, $photo1, $photos, $categories) {
+    $data = array (
+      'idobjet' => '',
+      'idproprietaire' => $proprietaire,
+      'titre' => $title,
+      'description' => $description,
+      'prix' => $prix
+    );
+
+    $this->db->insert('objet', $data);
+    $id = $this->db->insert_id('objet');
    
-  //   if($this->db->affected_rows() == 1) {
-  //     //  for($i = 0; $i<count($photos); $i++) {
-  //     //     $data =  array('idphoto' => '', 'idobjet' => $id, 'photo' => $photos['file_name']);
-  //     //     if($i == 0) {
-  //     //       $data[] = array('type' => 0);
-  //     //     }
-  //     //     else {
-  //     //       $data[] = array('type' => 1);
-  //     //     }
-  //     //     var_dump($data);
-  //     //     // $res = $this->db->insert('photoobjet', $data);
-  //     //  }
-  //      $count = count($photos['name']);
+    if($this->db->affected_rows() == 1) {
+      foreach ($categories as $categorie) {
+        $this->insertCategorie($id, $categorie);
+      }
+      $status = true;
+      $status = $this->uploadFiles($photo1, 1, $id);
+      if($status == true) {
+        foreach($photos as $photo) {
+          $status = $this->uploadFiles($photo, 0, $id);
+          if($status == FALSE) {
+            show_error('Erreur lors de l\'insertionvet l\'upload des images.', 500, 'Oups une erreur s\'est produite');
+          }
+        }
+      }
     
-  //   for($i=0;$i<$count;$i++){
-  
-  //     if(!empty($_FILES['photos']['name'][$i])){
-  //       $_FILES['file']['name'] = $photos['name'][$i];
-  //       $_FILES['file']['type'] = $photos['type'][$i];
-  //       $_FILES['file']['tmp_name'] = $photos['tmp_name'][$i];
-  //       $_FILES['file']['error'] = $photos['error'][$i];
-  //       $_FILES['file']['size'] = $photos['size'][$i];
+    }
+      
+  }
 
-  //       $config['upload_path'] = './assets/image'; 
-  //       $config['allowed_types'] = 'jpg|jpeg|png|gif';
-  //       $config['max_size'] = '5000';
-  //       $config['file_name'] = 'user'.$this->session->userdata('user').'_img'.$i;
+  public function uploadFiles($photo, $typephoto, $idobjet) {
+		$data = array();
+    echo $photo['name'];
+    $_FILES['file']['name'] = $photo['name'];
+    $_FILES['file']['type'] = $photo['type'];
+    $_FILES['file']['tmp_name'] = $photo['tmp_name'];
+    $_FILES['file']['error'] = $photo['error'];
+    $_FILES['file']['size'] = $photo['size'];
+    
+    $config['upload_path'] = './assets/image'; 
+    $config['allowed_types'] = 'jpg|jpeg|png|gif';
+    $config['max_size'] = '2000000';
+    $config['file_name'] = 'user_'.$this->session->user.$photo['name'];
+    
+        $this->load->library('upload',$config); 
+      
+        $uploadData = null;
+        if($this->upload->do_upload('file')){
+          $uploadData = $this->upload->data();
+          $this->insertPhoto($idobjet, $typephoto, $config['file_name']);
+          return TRUE;
+        }
 
-  //       $this->load->library('upload',$config); 
-  
-  //       $uploadData = null;
-  //       if($this->upload->do_upload('file')){
-  //         $uploadData = $this->upload->data();
-  //       }
-  //     }
+			return FALSE;
 
-  //   }
-  //   }
-  //   // return FALSE;
-  //   // echo $id;
-  // }
+	}
 
 	public function  getDetailsBy($id) {
     $query = $this->db->get_where("detailobjet",array("idobjet" => $id));
@@ -134,6 +150,39 @@ class Objet_model extends CI_Model {
       return $reponse[0];
     }
 	}
+
+  public function insertPhoto($idobjet, $type, $path) {
+    $data = array(
+      'idphoto' => '',
+      'idobjet' => $idobjet,
+      'photo' => $path,
+      'typephoto' => $type
+    );
+		$query = $this->db->insert('photoobjet', $data);
+    if($this->db->affected_rows() == 1) {
+      return true;
+    }
+    else {
+      echo 'insert Photo';
+      var_dump($this->db->error());
+      show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
+    }
+	}
+
+  public function insertCategorie($idobjet, $idcategorie) {
+    $data = array (
+      'idobjet' => $idobjet,
+      'idcategorie' => $idcategorie
+    );
+    
+    $this->db->insert('objetcategorie', $data);
+    if($this->db->affected_rows() == 1) {
+      return TRUE;
+    }
+    show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
+
+
+  }
   // ------------------------------------------------------------------------
   
 }

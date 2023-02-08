@@ -30,9 +30,8 @@ class Login extends CI_Controller {
 		);
   }
 
-  public function index()
-  {
-
+  public function index() {
+    $this->admin();
   }
 
   public function admin()

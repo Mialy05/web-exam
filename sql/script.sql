@@ -70,14 +70,23 @@ CREATE TABLE objetcategorie (
 
 ----proposition
 CREATE TABLE proposition(
+	idproposition INTEGER auto_increment,
 	idsender INTEGER,
 	idobjetsender INTEGER,
 	idreceiver INTEGER,
 	idobjetreceiver INTEGER,
 	jour TIMESTAMP,
-	statut INTEGER
+	statut INTEGER,
+	primary key(idproposition),
+	foreign key(idsender) REFERENCES utilisateur(idUtilisateur),
+	foreign key(idobjetsender) REFERENCES objet(idobjet),
+	foreign key(idreceiver) REFERENCES utilisateur(idUtilisateur),
+	foreign key(idobjetreceiver) REFERENCES objet(idobjet)
 );
-
+-- satut 0 raha mbola miandry acceptation, -5 raha mbola tsy misy , 5 ref mis
+insert into proposition values("",1,1,2,3,"2023-01-05 22:35:00",0);
+insert into proposition values("",3,10,1,6,"2023-02-07 12:20:10",5);
+insert into proposition values("",2,12,3,1,"2023-02-04 10:35:00",-5);
 ----Historique
 CREATE TABLE historique(
 	idhistorique INTEGER auto_increment,
@@ -168,12 +177,21 @@ insert into objetcategorie values(14,2);
 insert into objetcategorie values(15,2);
 
 
------view
+-----view detailsobjet
 CREATE VIEW detailshistorique as
 select historique.debut, historique.idhistorique,objet.idobjet ,utilisateur.idutilisateur, utilisateur.nom as proprietere
 from historique
 join utilisateur on (historique.idproprietaire=utilisateur.idutilisateur)
 join objet on (historique.idobjet=objet.idobjet);
+--view detailobjet
+create view detailobjet as 
+select objet.idobjet, titre, description, prix, idproprietaire, u.nom from objet 
+join utilisateur as u on idproprietaire=u.idutilisateur 
+join photoobjet as p on objet.idobjet=p.idobjet
+where p.typephoto = 1;
 
+select us.nom as nomSender
+from proposition
+join utilisateur as us on idsender=us.idutilisateur  ;
 
 
