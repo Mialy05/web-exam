@@ -58,16 +58,17 @@ a {
 }
 
 #footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
+        /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* gap: 2em; */
     background: aliceblue;
     padding: 1em 0em;
     margin-left: 15rem;
-    position: absolute;
+    /* position: absolute; */
+    text-align: center;
     margin-top: 2em;
-    top: calc(100% + 5%) !important;
+
 
 }
 
