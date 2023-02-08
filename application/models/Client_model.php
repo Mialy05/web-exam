@@ -60,6 +60,11 @@ class Client_model extends CI_Model {
     return FALSE;
   }
 
+  public function getTotalInscrit(){
+    return count($this->getAll());
+  }
+  
+
 	
 
 }
