@@ -26,21 +26,24 @@ class Admin extends CI_Controller {
   }
 
   public function index() {
-    $data = array(
-      'styleSheets' => [],
-      'title' => 'Admin | Les catégories',
-      'component' => 'backoffice/home',
-    );
+    // $data = array(
+    //   'styleSheets' => [],
+    //   'title' => 'Admin | Les catégories',
+    //   'component' => 'backoffice/home',
+    //   'site' => 'admin'
+    // );
 
-    $this->load->view('templates/body', $data);
+    // $this->load->view('templates/body', $data);
+    $this->listeCategories();
   }
 
   public function listeCategories() {
     $data["categories"] = $this->categorieModel->getAll();
 		$data = array(
-      'styleSheets' => ['admin-category.css'],
+      'styleSheets' => ['admin-category.css', 'navbar.css'],
       'title' => 'Les catégories',
       'component' => 'backoffice/liste-categorie',
+      'site' => 'admin',
 			'categories' => $this->categorieModel->getAll()
     );
     $this->load->view("templates/body", $data);

@@ -44,6 +44,10 @@ class Objet_model extends CI_Model {
     return $query->result();
   }
 
+  public function getDetailOthersObjet() {
+    return $this->db->get("detailobjet")->result();
+  }
+
   public function getDetailOthersObjetOf($iduser) {
     $condition = array('idproprietaire !=' => $iduser);
     return $this->getCondition($condition);
@@ -63,7 +67,7 @@ class Objet_model extends CI_Model {
 		$query= $this->db->like('titre',$motCle);
 
 		if($idcategory==0) {
-			return $this->db->get('objet')->result();
+			return $this->db->get('detailObjetCategorie')->result();
 		}
 		else{
 			return $this->db->get_where('detailObjetCategorie',['idcategorie'=>$idcategory])->result();

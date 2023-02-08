@@ -35,15 +35,8 @@ class Statistique extends Basecontroller
     public function utilisateur (){
         $data['total'] = $this->clientModel.getTotalInscrit();
 
-         $data = array(
-             'styleSheets' => ['listeproposition.css'],
-             'title' => 'Modification catégorie',
-             'component' => 'backoffice/statistique-user',
-             'site' => 'admin'
-           );
-
         $data = array(
-            'styleSheets' => ['listeproposition.css'],
+            'styleSheets' => ['listeproposition.css', 'navbar.css'],
             'title' => 'Modification catégorie',
             'component' => 'backoffice/statistique-user',
             'site' => 'admin',

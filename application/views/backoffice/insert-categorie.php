@@ -2,10 +2,10 @@
     defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
+<div class="title">
+    <h1>Nouvelle catégorie</h1>
+</div>
 <div class="container">
-    <div class="title">
-        <h1>Nouvelle catégorie</h1>
-    </div>
     <?= form_open('categoryadmin/creation', 'class=form'); ?>    
         <div class="input-group">
             <label for="nom">Nom</label>

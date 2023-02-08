@@ -38,15 +38,22 @@ class Objet extends Basecontroller
   }
 
 	public function details($id) {
+		$objects = $this->Objetmodel-> getDetailsBy($id);
+		$form = true;
+		if($objects->idproprietaire == $this->session->user) {
+			$form = false;
+		}
+
 		$data = array(
-			'styleSheets' => ['frontoffice/details-objet.css'], 
+			'styleSheets' => ['frontoffice/details-objet.css', 'navbar.css'], 
 			'title' => 'Détails', 
 			'site' => 'user', 
 			'component' => 'frontoffice/details-objet' ,
-			'categorie'=> $this->Objetmodel-> getDetailsBy($id),
+			'categorie'=> $objects,
 			'photos'=> $this->Objetmodel->getPhotos($id),
 			'myobjects' => $this->Objetmodel->getObjetOf($this->session->user),
-			"form" => true
+			'site' => 'user',
+			"form" => $form
 		);
 
 		$this->load->view('templates/body', $data);
@@ -56,13 +63,11 @@ class Objet extends Basecontroller
 		$this->load->model("Categorie_model","Categorymodel");
 
 		$data = array (
-			'styleSheets' => ['frontoffice/home.css'],
+			'styleSheets' => ['frontoffice/home.css', 'navbar.css'],
 			'title' => 'Rechercher',
 			'component' => 'frontoffice/recherche',
 			'site' => 'user',
-			// 'objets' => $this->Objetmodel->search($idcategory,$motCle),
 			'categories'=> $this->Categorymodel->getAll(),
-			// "form" => true
 		  );
 		  $this->load->view('templates/body', $data);
 	}
@@ -74,20 +79,21 @@ class Objet extends Basecontroller
 		$motCle = $this->input->post('motCle');	
 		$response = $this->Objetmodel->search($idcategory,$motCle);
 		$data = array (
-			'styleSheets' => ['frontoffice/home.css'],
+			'styleSheets' => ['frontoffice/home.css', 'navbar.css'],
 			'title' => 'Découvrir',
-			'component' => 'frontoffice/recherche',
+			'component' => 'frontoffice/home',
 			'site' => 'user',
-			'categories'=> $this->Categorymodel->getAll(),
+			'objets'=> $response,
 		  );
-		//   $this->load->view('templates/body', $data);
-		var_dump($response);
+		
+		$this->load->view('templates/body', $data);
+		// var_dump($response);
 	}
 
 	public function myobjets() {
 		$objets = $this->Objetmodel->getDetailObjetOf($this->session->user);
 		$data = array (
-		  'styleSheets' => ['frontoffice/home.css'],
+		  'styleSheets' => ['frontoffice/home.css', 'navbar.css'],
 		  'title' => 'Gestion d\'objets',
 		  'component' => 'frontoffice/my-objet',
 		  'site' => 'user',
@@ -101,7 +107,7 @@ class Objet extends Basecontroller
 		$this->load->model('Categorie_model', 'categorieModel', true);
 		$categories = $this->categorieModel->getAll();
 		$data = array (
-		  'styleSheets' => ['form.css', 'frontoffice/create-objet.css'],
+		  'styleSheets' => ['form.css', 'frontoffice/create-objet.css','navbar.css'],
 		  'title' => 'Ajouter objet',
 		  'component' => 'frontoffice/create-objet',
 		  'site' => 'user',

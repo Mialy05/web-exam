@@ -35,7 +35,7 @@ class Site extends Basecontroller
   public function allobjets() {
     $objets = $this->objetModel->getDetailOthersObjetOf($this->session->user);
     $data = array (
-      'styleSheets' => ['frontoffice/home.css'],
+      'styleSheets' => ['frontoffice/home.css', 'navbar.css'],
       'title' => 'Découvrir',
       'component' => 'frontoffice/home',
       'site' => 'user',

@@ -33,3 +33,12 @@
     align-items: center;
 }
 
+.options {
+    margin: 2em 1em;
+}
+
+.btnLink {
+    background-color: var(--theme);
+    width: 15rem;
+    height: 4rem;
+}
