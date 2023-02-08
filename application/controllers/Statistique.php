@@ -29,20 +29,38 @@ class Statistique extends Basecontroller
     {
       parent::__construct();
       $this->load->model('client_model', 'clientModel', true);
+      $this->load->model('objet_model', 'objetModel', true);
       $this->errorMessage = array ();
     }
 
     public function utilisateur (){
-        $data['total'] = $this->clientModel.getTotalInscrit();
 
-        $data = array(
-            'styleSheets' => ['listeproposition.css', 'navbar.css'],
-            'title' => 'Modification catégorie',
-            'component' => 'backoffice/statistique-user',
-            'site' => 'admin',
-            "total"=> $this->clientModel->getTotalInscrit()
-          );
+        $total = $this->clientModel->getTotalInscrit();
+
+         $data = array(
+             'styleSheets' => ['backoffice/menu-statistique.css'],
+             'title' => 'Statistique utilisateur',
+             'component' => 'backoffice/menu-statistique',
+             'site' => 'admin',
+             'total'=>$total
+           );
+
         
          $this->load->view('templates/body', $data);
     }
+
+    public function echange($statues){
+      $echange = $this->objetModel->getTotalEchange($statues);
+
+      $data = array(
+        'styleSheets' => ['backoffice/menu-statistique.css'],
+        'title' => 'Statistique des echanges',
+        'component' => 'backoffice/statistique-echange',
+        'site' => 'admin',
+        'total'=>$echange
+      );
+      $this->load->view('templates/body', $data);
+    }
+    
+
 }
