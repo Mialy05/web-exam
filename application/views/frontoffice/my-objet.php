@@ -3,7 +3,7 @@
 ?>
 <div class="container">
     <div class="options">
-        <?= anchor('site/nouveau', 'Ajouter', 'class=btnLink'); ?>
+        <?= anchor('objet/nouveau', 'Ajouter', 'class=btnLink'); ?>
     </div>
     <div class="home">
         <div class="liste">
