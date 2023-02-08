@@ -94,44 +94,78 @@ class Objet_model extends CI_Model {
       $this->insertHistorique($id, $proprietaire, date('Y-m-d H:i:s'));
 
       $status = true;
-      $status = $this->uploadFiles($photo1, 1, $id);
+      $status = $this->uploadOne($photo1, 1, $id);
       if($status == true) {
-        foreach($photos as $photo) {
-          $status = $this->uploadFiles($photo, 0, $id);
-          if($status == FALSE) {
-            show_error('Erreur lors de l\'insertionvet l\'upload des images.', 500, 'Oups une erreur s\'est produite');
-          }
+        // foreach($photos as $photo) {
+        // }
+        $status = $this->uploadFiles($photos, 0, $id);
+        if($status == FALSE) {
+          show_error('Erreur lors de l\'insertionvet l\'upload des images.', 500, 'Oups une erreur s\'est produite');
         }
       }
-    
+
     }
       
   }
 
+  
+
   public function uploadFiles($photo, $typephoto, $idobjet) {
 		$data = array();
-    echo $photo['name'];
-    $_FILES['file']['name'] = $photo['name'];
-    $_FILES['file']['type'] = $photo['type'];
-    $_FILES['file']['tmp_name'] = $photo['tmp_name'];
-    $_FILES['file']['error'] = $photo['error'];
-    $_FILES['file']['size'] = $photo['size'];
-    
-    $config['upload_path'] = './assets/image'; 
-    $config['allowed_types'] = 'jpg|jpeg|png|gif';
-    $config['max_size'] = '2000000';
-    $config['file_name'] = 'user_'.$this->session->user.$photo['name'];
-    
-        $this->load->library('upload',$config); 
+    $reponse = FALSE;
+    for($i=0; $i<count($photo["name"]); $i++) {
+      $_FILES['file']['name'] = $photo['name'][$i];
+      $_FILES['file']['type'] = $photo['type'][$i];
+      $_FILES['file']['tmp_name'] = $photo['tmp_name'][$i];
+      $_FILES['file']['error'] = $photo['error'][$i];
+      $_FILES['file']['size'] = $photo['size'][$i];
       
-        $uploadData = null;
-        if($this->upload->do_upload('file')){
-          $uploadData = $this->upload->data();
-          $this->insertPhoto($idobjet, $typephoto, $config['file_name']);
-          return TRUE;
-        }
+      $config['upload_path'] = './assets/image'; 
+      $config['allowed_types'] = 'jpg|jpeg|png|gif';
+      $config['max_size'] = '2000000';
+      $config['file_name'] = 'user_'.$this->session->user.$photo['name'][$i];
+      $this->load->library('upload',$config); 
+    
+      $uploadData = null;
+      if($this->upload->do_upload('file')){
+        $uploadData = $this->upload->data();
+        $this->insertPhoto($idobjet, $typephoto, $uploadData['file_name']);
+        $reponse = TRUE;
+      } else {
+        $this->upload->display_errors();
+      }
 
-			return FALSE;
+    }
+			return $reponse;
+
+	}
+
+  public function uploadOne($photo, $typephoto, $idobjet) {
+		$data = array();
+    $reponse = FALSE;
+      $_FILES['file']['name'] = $photo['name'];
+      $_FILES['file']['type'] = $photo['type'];
+      $_FILES['file']['tmp_name'] = $photo['tmp_name'];
+      $_FILES['file']['error'] = $photo['error'];
+      $_FILES['file']['size'] = $photo['size'];
+      
+      $config['upload_path'] = './assets/image'; 
+      $config['allowed_types'] = 'jpg|jpeg|png|gif';
+      $config['max_size'] = '2000000';
+      $config['file_name'] = 'user_'.$this->session->user.$photo['name'];
+      $this->load->library('upload',$config); 
+    
+      $uploadData = null;
+      if($this->upload->do_upload('file')){
+        $uploadData = $this->upload->data();
+        $this->insertPhoto($idobjet, $typephoto, $uploadData['file_name']);
+        $reponse = TRUE;
+      }
+      else {
+        $this->upload->display_errors();
+      }
+
+			return $reponse;
 
 	}
 
@@ -154,15 +188,13 @@ class Objet_model extends CI_Model {
 
   public function insertPhoto($idobjet, $type, $path) {
     $data = array(
-      'idphoto' => '',
+      'idphot' => '',
       'idobjet' => $idobjet,
       'photo' => $path,
       'typephoto' => $type
     );
-		// $query = $this->db->insert('photoobjet', $data, now());
-    // if($this->db->affected_rows() == 1) {
-    //   return true;
-    // }
+		$this->db->insert('photoobjet', $data);
+   
     // else {
     //   echo 'insert Photo';
     //   var_dump($this->db->error());

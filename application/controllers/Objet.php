@@ -138,13 +138,14 @@ class Objet extends Basecontroller
 		  $description = $this->input->post('description');
 		  $prix = $this->input->post('prix');
 		  $photo = $_FILES['photo1'];
-		  $photos = $_FILES['photos[]'];
+		//   $photos = $_FILES['photos'];
+		var_dump($_FILES['photos']);
 		  $categories = $this->input->post('categorie[]');
 		  var_dump($categories);
 	
-		  $this->Objetmodel->create($title, $description, $prix, $this->session->user, $photo, $photos, $categories);
+		  $this->Objetmodel->create($title, $description, $prix, $this->session->user, $photo, $_FILES['photos'], $categories);
 		  
-		  redirect('objet/myobjets');
+		//   redirect('objet/myobjets');
 		}
 	
 	  }
