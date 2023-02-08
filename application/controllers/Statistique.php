@@ -32,8 +32,15 @@ class Statistique extends Basecontroller
       $this->errorMessage = array ();
     }
 
-    public function utilisateur () {
-  
+    public function utilisateur (){
+        $data['total'] = $this->clientModel.getTotalInscrit();
+
+         $data = array(
+             'styleSheets' => ['listeproposition.css'],
+             'title' => 'Modification catégorie',
+             'component' => 'backoffice/statistique-user',
+             'site' => 'admin'
+           );
 
         $data = array(
             'styleSheets' => ['listeproposition.css'],
@@ -43,6 +50,6 @@ class Statistique extends Basecontroller
             "total"=> $this->clientModel->getTotalInscrit()
           );
         
-        $this->load->view('templates/body', $data);
+         $this->load->view('templates/body', $data);
     }
 }

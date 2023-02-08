@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+// Don't forget include/define REST_Controller path
 
 /**
  *
@@ -44,6 +44,15 @@ class Proposition extends Basecontroller
     redirect('objet/myobjets');
   }
 
+	public function listeProposition() {
+    $data = array(
+      'styleSheets' => ['listeproposition.css'],
+      'title' => 'Mes proposition',
+      'component' => 'liste-proposition'
+			
+    );
+    $this->load->view("templates/body", $data);
+  }
 }
 
 
