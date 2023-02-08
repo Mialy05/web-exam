@@ -63,11 +63,10 @@ class Objet_model extends CI_Model {
 		$query= $this->db->like('titre',$motCle);
 
 		if($idcategory==0) {
-			return $this->db->get('objet');
+			return $this->db->get('objet')->result();
 		}
 		else{
-			$query= $this->db->get_where('select idobjet from categorie 
-			join objetcategorie as objcat on idcategorie=objcat.idcategorie',['idcategorie'=>$idcategory]);
+			return $this->db->get_where('detailObjetCategorie',['idcategorie'=>$idcategory])->result();
 		}
 	}
 

@@ -51,6 +51,38 @@ class Objet extends Basecontroller
 
 		$this->load->view('templates/body', $data);
 	}
+    // tache sarobidy sprint4
+	public function search() {
+		$this->load->model("Categorie_model","Categorymodel");
+
+		$data = array (
+			'styleSheets' => ['frontoffice/home.css'],
+			'title' => 'Rechercher',
+			'component' => 'frontoffice/recherche',
+			'site' => 'user',
+			// 'objets' => $this->Objetmodel->search($idcategory,$motCle),
+			'categories'=> $this->Categorymodel->getAll(),
+			// "form" => true
+		  );
+		  $this->load->view('templates/body', $data);
+	}
+
+	public function result() {
+		$this->load->model("Categorie_model","Categorymodel");
+
+		$idcategory = $this->input->post('category');
+		$motCle = $this->input->post('motCle');	
+		$response = $this->Objetmodel->search($idcategory,$motCle);
+		$data = array (
+			'styleSheets' => ['frontoffice/home.css'],
+			'title' => 'Découvrir',
+			'component' => 'frontoffice/recherche',
+			'site' => 'user',
+			'categories'=> $this->Categorymodel->getAll(),
+		  );
+		//   $this->load->view('templates/body', $data);
+		var_dump($response);
+	}
 
 	public function myobjets() {
 		$objets = $this->Objetmodel->getDetailObjetOf($this->session->user);

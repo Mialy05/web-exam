@@ -183,6 +183,7 @@ select historique.debut, historique.idhistorique,objet.idobjet ,utilisateur.idut
 from historique
 join utilisateur on (historique.idproprietaire=utilisateur.idutilisateur)
 join objet on (historique.idobjet=objet.idobjet);
+
 --view detailobjet
 create view detailobjet as 
 select objet.idobjet, titre, description, prix, idproprietaire, u.nom from objet 
@@ -194,4 +195,8 @@ select us.nom as nomSender
 from proposition
 join utilisateur as us on idsender=us.idutilisateur  ;
 
-
+-- view details 
+create or replace view detailObjetCategorie as
+select objetcategorie.idcategorie, objetcategorie.idobjet ,obj.titre from objetcategorie 
+join categorie as categ on objetcategorie.idcategorie=categ.idcategorie 
+join objet as obj on objetcategorie.idobjet=obj.idobjet;

@@ -43,9 +43,9 @@ class Test extends CI_Controller
     $this->load->view('templates/body', $data);
   }
 
-  public function modele($id) {
+  public function modele($category,$motCle) {
 			$this->load->model("Objet_model","Objetmodel");
-			$this->Objetmodel->getDetailsBy($id);
+			$this->Objetmodel->search($category,$motCle);
 			
 		}
 
