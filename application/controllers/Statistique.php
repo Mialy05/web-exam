@@ -45,12 +45,11 @@ class Statistique extends Basecontroller
              'total'=>$total
            );
 
-        
          $this->load->view('templates/body', $data);
     }
 
     public function echange($statues){
-      $echange = $this->objetModel->getTotalEchange($statues);
+      $echange = $this->objetModel->getTotalEchange(5);
 
       $data = array(
         'styleSheets' => ['backoffice/menu-statistique.css'],
@@ -62,5 +61,19 @@ class Statistique extends Basecontroller
       $this->load->view('templates/body', $data);
     }
     
+    public function stat(){
+      $echange = $this->objetModel->getTotalEchange(5);
+      $inscrits = $this->clientModel->getTotalInscrit();
+
+      $data = array(
+        'styleSheets' => ['backoffice/statistique.css', 'navbar.css'],
+        'title' => 'Statistique',
+        'component' => 'backoffice/statistique',
+        'site' => 'admin',
+        'echanges'=>$echange,
+        'inscrits' => $inscrits
+      );
+      $this->load->view('templates/body', $data);
+    }
 
 }

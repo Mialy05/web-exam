@@ -10,7 +10,7 @@
             <?= anchor('admin/', 'Gérer les catégories') ?>
         </li>
         <li class="nav-item">
-            <?= anchor('', 'Statistiques') ?>
+            <?= anchor('statistique/stat', 'Statistiques') ?>
         </li>
         <li class="nav-item">
             <?= anchor('login/logout', 'Se déconnecter') ?>
