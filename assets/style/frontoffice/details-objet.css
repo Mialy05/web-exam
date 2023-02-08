@@ -52,7 +52,8 @@
 }
 
 .img-container img {
-    width: 100%;
+    width: 18rem;
+    height: 12rem;
 }
 
 .photos {
