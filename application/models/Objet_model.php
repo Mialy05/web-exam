@@ -149,12 +149,7 @@ class Objet_model extends CI_Model {
 	public function getPhotos($id) {
 		$query = $this->db->get_where("photoobjet",array("idobjet" => $id));
 		$reponse = $query->result();
-    if(count($reponse) == 0) {
-      return null;
-    }
-    else {
-      return $reponse[0];
-    }
+    return $reponse;
 	}
 
   public function insertPhoto($idobjet, $type, $path) {
@@ -165,14 +160,14 @@ class Objet_model extends CI_Model {
       'typephoto' => $type
     );
 		// $query = $this->db->insert('photoobjet', $data, now());
-    if($this->db->affected_rows() == 1) {
-      return true;
-    }
-    else {
-      echo 'insert Photo';
-      var_dump($this->db->error());
-      show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
-    }
+    // if($this->db->affected_rows() == 1) {
+    //   return true;
+    // }
+    // else {
+    //   echo 'insert Photo';
+    //   var_dump($this->db->error());
+    //   show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
+    // }
 	}
 
   public function insertCategorie($idobjet, $idcategorie) {
@@ -182,12 +177,6 @@ class Objet_model extends CI_Model {
     );
     
     $this->db->insert('objetcategorie', $data);
-    if($this->db->affected_rows() == 1) {
-      return TRUE;
-    }
-    show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
-
-
   }
 
   public function insertHistorique($idobjet, $idprorietaire, $jour) {
@@ -199,10 +188,6 @@ class Objet_model extends CI_Model {
     );
 
     $this->db->insert('historique', $data);
-    if($this->db->affected_rows() == 1) {
-      return TRUE;
-    }
-    show_error('Erreur lors de l\'insertion.', 500, 'Oups une erreur s\'est produite');
 
   }
 

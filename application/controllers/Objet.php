@@ -41,7 +41,7 @@ class Objet extends Basecontroller
 		$objects = $this->Objetmodel-> getDetailsBy($id);
 		$form = true;
 		if($objects->idproprietaire == $this->session->user) {
-			$form = false;
+			$form = false;  
 		}
 
 		$data = array(
