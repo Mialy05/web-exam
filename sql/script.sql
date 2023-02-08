@@ -70,12 +70,18 @@ CREATE TABLE objetcategorie (
 
 ----proposition
 CREATE TABLE proposition(
+	idproposition integer auto_increment,
 	idsender INTEGER,
 	idobjetsender INTEGER,
 	idreceiver INTEGER,
 	idobjetreceiver INTEGER,
 	jour TIMESTAMP,
-	statut INTEGER
+	statut INTEGER,
+	primary key(idproposition),
+	foreign key(idsender) references utilisateur(idutilisateur),
+	FOREIGN KEY(idobjetreceiver) references objet(idobjet),
+	FOREIGN KEY(idreceiver) references utilisateur(idutilisateur),
+	FOREIGN KEY(idobjetsender) references objet(idobjet)
 );
 
 ----Historique

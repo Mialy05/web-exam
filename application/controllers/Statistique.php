@@ -20,7 +20,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 require_once APPPATH.'controllers/Basecontroller.php'; 
 
-class Statistique extends CI_Controller
+class Statistique extends Basecontroller
 {
 
     private $errorMessage;
@@ -32,20 +32,17 @@ class Statistique extends CI_Controller
       $this->errorMessage = array ();
     }
 
-    public function utilisateur (){
-        $data['total'] = $this->clientModel.getTotalInscrit();
+    public function utilisateur () {
+  
 
-        // $data['total'] = $this->clientModel.getTotalInscrit();
-
-        // $data = array(
-        //     'styleSheets' => ['listeproposition.css'],
-        //     'title' => 'Modification catégorie',
-        //     'component' => 'backoffice/statistique-user',
-        //     'site' => 'admin',
-                "total"=>$this->clientModel.getTotalInscrit();
-        //   );
-
+        $data = array(
+            'styleSheets' => ['listeproposition.css'],
+            'title' => 'Modification catégorie',
+            'component' => 'backoffice/statistique-user',
+            'site' => 'admin',
+            "total"=> $this->clientModel->getTotalInscrit()
+          );
         
-        // $this->load->view('templates/body', $data);
+        $this->load->view('templates/body', $data);
     }
 }
