@@ -86,8 +86,8 @@ class Objet extends Basecontroller
 			'objets'=> $response,
 		  );
 		
-		// $this->load->view('templates/body', $data);
-		var_dump($response);
+		$this->load->view('templates/body', $data);
+		// var_dump($response);
 	}
 
 	public function myobjets() {

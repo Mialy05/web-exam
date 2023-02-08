@@ -51,7 +51,9 @@ class Login extends CI_Controller {
 		$data = array(
       'styleSheets' => ['login.css'],
       'title' => 'Login',
-      'component' => 'login'
+      'component' => 'login',
+      'email' => 'ionisoa@gmail.com',
+      'password' => 'ioni123'
     );
 		$this->load->view('login', $data);
   }
