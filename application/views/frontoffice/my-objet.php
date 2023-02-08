@@ -9,9 +9,7 @@
         <div class="liste">
             <?php foreach($objets as $objet) { ?>
                 <div class="card">
-                    <!-- <div class="img"> -->
-                        <img src="<?= base_url().'/assets/image/'.$objet->photo ?>" alt="photo">
-                    <!-- </div> -->
+                    <img src="<?= base_url().'assets/image/'.$objet->photo ?>" alt="photo">
                     <div class="details">
                         <p class="name"><?= $objet->titre ?></p>
                         <p class="prix"><?= $objet->prix ?> MGA</p>

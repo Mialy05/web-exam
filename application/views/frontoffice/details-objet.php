@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="title"><h1>A propos de <?= $categorie->titre ?></h1></div>
     <div class="container">
         <div class="left-side">
-            <img src="<?= base_url()."/assets/image/".$categorie->photo ?>" alt="Photo principale">
+            <img src="<?= base_url()."assets/image/".$categorie->photo ?>" alt="Photo principale">
         </div>
         <div class="right-side">
             <div class="data">
@@ -35,12 +35,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo form_close();
             } ?>
         </div>
-    </div>
+    </div> 
     <div class="photos">
         <div class="liste">
             <?php foreach($photos as $photo) { ?>
                 <div class="img-container">
-                    <img src="<?= base_url()."/assets/image/".$photo->photo ?> alt="Photo principale">
+                    <img src="<?= base_url()."assets/image/".$photo->photo ?>" alt="Photo principale">
                 </div>
             <?php } ?>   
         </div>
