@@ -49,8 +49,9 @@ class Statistique extends Basecontroller
          $this->load->view('templates/body', $data);
     }
 
-    public function echange(){
-      $echange = $this->objetModel->getTotalEchange();
+    public function echange($statues){
+      $echange = $this->objetModel->getTotalEchange($statues);
+
       $data = array(
         'styleSheets' => ['backoffice/menu-statistique.css'],
         'title' => 'Statistique des echanges',
