@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="title"><h1>A propos de <?= $categorie->titre ?></h1></div>
     <div class="container">
         <div class="left-side">
-            <img src="<?= base_url() ?>/assets/image/code.png" alt="Photo principale">
+            <img src="<?= base_url()."/assets/image/".$categorie->photo ?>" alt="Photo principale">
         </div>
         <div class="right-side">
             <div class="data">
