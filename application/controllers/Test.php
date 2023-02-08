@@ -18,8 +18,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-// require_once APPPATH.'controllers/Basecontroller.php';
-
 class Test extends CI_Controller
 {
     
@@ -34,28 +32,23 @@ class Test extends CI_Controller
   }
 
   public function view() {
-    $data = array(
-      'styleSheets' => ['frontoffice/home.css'],
-      'title' => 'bienvenu',
-      'component' => 'frontoffice/home'
+		$data = array(
+      'styleSheets' => ['admin-category.css'],
+      'title' => 'liste',
+      'component' => 'liste-categorie'
     );
 
     $this->load->view('templates/body', $data);
   }
 
-  public function modele() {
-    // $this->session->set_userdata('name', 'Rakoto'); 
-    // if($this->session->name != null) {
-      // echo $this->session->name;
-    // }
-    // $this->session->unset_userdata('name'); 
-    // if($this->session->name != null) {
-      $this->load->model("Categorie_model", "c");
-      var_dump( $this->c->getAll());
-    }
-  }
+  public function modele($id) {
+			$this->load->model("Objet_model","Objetmodel");
+			$this->Objetmodel->getDetailsBy($id);
+			
+		}
 
 
+}
 
 
 /* End of file Test.php */

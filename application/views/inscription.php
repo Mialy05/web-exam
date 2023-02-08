@@ -11,13 +11,13 @@
     <?php foreach($styleSheets as $style) { ?>
         <link rel="stylesheet" href="<?= base_url() ?>assets/style/<?= $style ?>">
     <?php } ?>
-    <title><?= $title ?></title>
+    <title>E-Fanakalo | <?= $title ?></title>
 </head>
 <body>
-    <div class="front">
-        <form action="" method="post" class="form login">
+    <div class="container">
+        <?= form_open('inscription/inscrire', 'class=form'); ?>
             <div class="input-group">
-                <label for="nom">Nom<label>
+                <label for="nom">Nom</label>
                 <input type="text" name="nom" class="input" value="<?= set_value("nom"); ?>">
             </div>
             <div class="input-group">
@@ -29,17 +29,21 @@
                 <input type="email" name="email" class="input" value="<?= set_value("email"); ?>">
             </div>
             <div class="input-group">
-                <label for="password">Mot de pass</label>
+                <label for="password">Mot de passe</label>
                 <input type="password" name="password" class="input">
             </div>
             <div class="tools" id="loginTools">
-                <button class="btn loginBtn" >Se connecter</button>
+                <button class="btn loginBtn" type="submit" >S' inscrire</button>
                 <p>
-                    Pas encore de compte? 
-                    <a href="" class="link">S'inscrire</a>
+                    Déjà un compte ? 
+                    <?= anchor('login', 'Se connecter') ?>
                 </p>
             </div>
-        </form>
+            
+        <?= form_close() ?>
+        <div class="message error">
+            <?= validation_errors() ?>
+        </div>
     </div>
 
 </body>
