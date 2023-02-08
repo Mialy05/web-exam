@@ -38,13 +38,10 @@
 
 .liste {
     display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-
-    /* overflow-x: scroll;
-    overflow-y: hidden; */
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 4rem;
 }
 
 .img-container {
