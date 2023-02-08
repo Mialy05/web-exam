@@ -36,6 +36,11 @@ class Client_model extends CI_Model {
 
   // ------------------------------------------------------------------------
 
+  public function  getAll() {
+    $query = $this->db->get('utilisateur');
+    return $query->result();
+  }
+
   // $condition = array('email' => ?, 'password' => ?)
   public function auth($condition) {
     $query = $this->db->get_where('utilisateur', $condition);
@@ -54,6 +59,13 @@ class Client_model extends CI_Model {
     }
     return FALSE;
   }
+
+  public function getTotalInscrit(){
+    return count($this->getAll());
+  }
+  
+
+	
 
 }
 

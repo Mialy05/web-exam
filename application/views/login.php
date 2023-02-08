@@ -42,9 +42,18 @@
                     Pas encore de compte? 
                     <?= anchor('inscription', 'S\'inscrire'); ?>
                 </p>
+                <p>
+                    Pas admin?
+                    <?= anchor('login/utilisateur', 'Se connecter'); ?>
+                </p>
             </div>
             <div class="message error">
                 <?= validation_errors() ?>
+                <?php 
+                    if(isset($error)) { ?>
+                        <p><?= $error ?></p>
+                    <?php }
+                ?>
             </div>
         <?= form_close() ?>
     </div>
