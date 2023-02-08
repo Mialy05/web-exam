@@ -101,7 +101,8 @@ class Login extends CI_Controller {
             'title' => 'Login',
             'component' => 'login',
             'email' => $email,
-            'password' => ''
+            'password' => '',
+            'error' => 'Email ou mot de passe incorrect'
           );
           $this->load->view('login', $data);
         }

@@ -9,7 +9,6 @@
 				<p><?= $categories[$i]->nom; ?></p>
 					<div class="tools">
 						<?= anchor('categoryadmin/modifier/'.$categories[$i]->idcategorie, 'Modifier', 'class=link success'); ?>
-						<?= anchor('categoryadmin/supprimer/'.$categories[$i]->idcategorie, 'Supprimer', 'class=link danger'); ?>
 					</div>
 			</div>
 	<?php } ?>

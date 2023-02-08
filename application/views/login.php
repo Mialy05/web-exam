@@ -45,6 +45,11 @@
             </div>
             <div class="message error">
                 <?= validation_errors() ?>
+                <?php 
+                    if(isset($error)) { ?>
+                        <p><?= $error ?></p>
+                    <?php }
+                ?>
             </div>
         <?= form_close() ?>
     </div>
