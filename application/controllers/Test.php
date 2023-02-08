@@ -34,9 +34,9 @@ class Test extends CI_Controller
   public function view() {
 		
         $data = array(
-       'styleSheets' => ['listeproposition.css'],
-       'title' => 'Modification catégorie',
-       'component' => 'backoffice/statistique-user',
+       'styleSheets' => ['frontoffice/historique.css'],
+       'title' => 'historique',
+       'component' => 'frontoffice/historique',
        'site' => 'admin',
      );
     $this->load->view('templates/body', $data);
@@ -47,7 +47,6 @@ class Test extends CI_Controller
 			$this->Objetmodel->search($category,$motCle);
 			
 	}
-
   public function total() {
 
   //   $this->load->model("Client_model","clientmodel");
@@ -59,7 +58,6 @@ class Test extends CI_Controller
     }
 
 }
-
 
 /* End of file Test.php */
 /* Location: ./application/controllers/Test.php */

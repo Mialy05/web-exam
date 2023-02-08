@@ -208,6 +208,10 @@ class Objet_model extends CI_Model {
 		
 	}
   // ------------------------------------------------------------------------
+  public function getTotalEchange($status){
+    $query = $this->db->get_where("proposition" ,$status);
+    return $query->result();
+  }
   
 }
 
