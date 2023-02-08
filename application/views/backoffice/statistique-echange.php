@@ -3,7 +3,7 @@
 ?>
 <div class="statistique">
     <div class="title">
-        <h1><?php echo $title; ?></</h1>
+        <h1>Statistique des echanges</h1>
     </div>
 	<p>Total inscrit:</p>
 </div>

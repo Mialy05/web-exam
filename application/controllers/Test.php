@@ -34,9 +34,9 @@ class Test extends CI_Controller
   public function view() {
 		
         $data = array(
-       'styleSheets' => ['menu-statistique.css'],
-       'title' => 'Statistique des echanges',
-       'component' => 'backoffice/statistique-echange',
+       'styleSheets' => ['frontoffice/historique.css'],
+       'title' => 'historique',
+       'component' => 'frontoffice/historique',
        'site' => 'admin',
      );
     $this->load->view('templates/body', $data);
