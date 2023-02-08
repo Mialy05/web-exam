@@ -10,7 +10,7 @@
             <?php foreach($objets as $objet) { ?>
                 <div class="card">
                     <!-- <div class="img"> -->
-                        <img src="<?= base_url().'/assets/image/code.png' ?>" alt="photo">
+                        <img src="<?= base_url().'/assets/image/'.$objet->photo ?>" alt="photo">
                     <!-- </div> -->
                     <div class="details">
                         <p class="name"><?= $objet->titre ?></p>

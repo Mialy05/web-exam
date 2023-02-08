@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="liste">
             <?php foreach($photos as $photo) { ?>
                 <div class="img-container">
-                    <img src="<?= base_url() ?>/assets/image/code.png" alt="Photo principale">
+                    <img src="<?= base_url()."/assets/image/".$photo->$photo ?> alt="Photo principale">
                 </div>
             <?php } ?>   
         </div>
